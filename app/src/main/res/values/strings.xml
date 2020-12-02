@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">My Space</string>
+    <string name="title"><u><b>Registration</b></u></string>
+
+
+    <string-array name="user">
+        <item>Customer</item>
+        <item>Vendor</item>
+
+    </string-array>
+
+    <string name="a1">Already have an account?</string>
+
+</resources>
