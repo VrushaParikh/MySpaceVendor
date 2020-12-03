@@ -17,4 +17,15 @@ public interface Api {
     Call<ServerResponse> login(
             @Field("email") String email,
             @Field("password") String password);
+
+    @FormUrlEncoded
+    @POST(my_url + "register")
+    Call<ServerResponse> register(
+            @Field("fname") String fname,
+            @Field("email") String email,
+            @Field("category") String category,
+            @Field("dob") String dob,
+            @Field("phno") String phno,
+            @Field("pwd") String pwd,
+            @Field("ad_no") String ad_no);
 }

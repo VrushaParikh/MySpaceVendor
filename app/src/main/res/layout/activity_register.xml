@@ -37,7 +37,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/fnametext"
+            android:id="@+id/edtFname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -59,7 +59,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -81,7 +81,7 @@
             android:textStyle="bold" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spinCat"
             android:layout_width="373dp"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
@@ -107,14 +107,11 @@
             android:id="@+id/datePicker"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:layout_marginLeft="20dp"
             android:layout_marginTop="2dp"
             android:layout_marginRight="20dp"
             android:background="#11000000"
             android:calendarViewShown="false"
-
-
             android:datePickerMode="spinner" />
 
         <TextView
@@ -130,7 +127,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editTextPhone"
+            android:id="@+id/edtPh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -153,7 +150,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/edtPwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -175,7 +172,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editTextNumber"
+            android:id="@+id/edtAdno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -186,6 +183,7 @@
 
         <Button
             android:id="@+id/register"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"

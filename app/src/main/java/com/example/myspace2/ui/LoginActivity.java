@@ -45,25 +45,20 @@ public class LoginActivity extends AppCompatActivity {
     private void init() {
 
 
+        binding.login.setOnClickListener(view -> {
 
-        binding.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            email = binding.edtEmail.getText().toString().trim();
+            password = binding.edtPwd.getText().toString().trim();
 
-                email = binding.edtEmail.getText().toString().trim();
-                password = binding.edtPwd.getText().toString().trim();
-
-                Log.d(TAG, "init: " + binding.edtEmail.getText().toString().trim() + "----" + binding.edtPwd.getText().toString().trim());
+            Log.d(TAG, "init: " + binding.edtEmail.getText().toString().trim() + "----" + binding.edtPwd.getText().toString().trim());
 
 
-
-                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                    binding.edtPwd.setError("All Fields are Required!!");
-                    return;
-                }
-
-                doLogin(email, password);
+            if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+                binding.edtPwd.setError("All Fields are Required!!");
+                return;
             }
+
+            doLogin(email, password);
         });
 
 
@@ -92,13 +87,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void clickListener() {
 
-        binding.signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                openActivity(RegistrationActivity.class);
-            }
-        });
+        binding.signup.setOnClickListener(v -> openActivity(RegistrationActivity.class));
     }
 
 
@@ -106,5 +95,5 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(context, aclass);
         startActivity(intent);
     }
-//da82092aa93166b007c074cc7da738a27b81e4d7
+
 }
