@@ -5,7 +5,7 @@
     style="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimaryVariant"
+    android:background="@color/colorDarkBlue"
     app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle2" />
 
 

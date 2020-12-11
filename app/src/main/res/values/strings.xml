@@ -9,6 +9,77 @@
 
     </string-array>
 
+    <string-array name="category">
+        <item>Choose shop category</item>
+        <item>Apparels</item>
+        <item>Cosmetics</item>
+        <item>Jewellery</item>
+        <item>Gifts</item>
+        <item>Grocery</item>
+        <item>Electronic Appliances</item>
+
+    </string-array>
+
+    <string-array name="start">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+
+    </string-array>
+
+    <string-array name="end">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+
+    </string-array>
+
+    <string-array name="start_min">
+        <item>00</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+
+    </string-array>
+
+    <string-array name="end_min">
+        <item>00</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+
+    </string-array>
+
+    <string-array name="start_ampm">
+        <item>AM</item>
+        <item>PM</item>
+
+    </string-array>
+
+    <string-array name="end_ampm">
+        <item>AM</item>
+        <item>PM</item>
+
+    </string-array>
+
     <string name="a1">Already have an account?</string>
 
 </resources>

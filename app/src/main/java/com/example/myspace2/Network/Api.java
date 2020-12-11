@@ -18,6 +18,7 @@ public interface Api {
             @Field("email") String email,
             @Field("password") String password);
 
+
     @FormUrlEncoded
     @POST(my_url + "register")
     Call<ServerResponse> register(
@@ -28,4 +29,27 @@ public interface Api {
             @Field("phno") String phno,
             @Field("pwd") String pwd,
             @Field("ad_no") String ad_no);
+
+
+    @FormUrlEncoded
+    @POST(my_url + "shopregister")
+    Call<ServerResponse> ShopRegister(
+            @Field("shname") String shname,
+            @Field("shadd") String shadd,
+            @Field("shcategory") String shcategory,
+            @Field("sharea") String sharea,
+            @Field("shcity") String shcity,
+            @Field("shstate") String shstate,
+            @Field("shpin") String shpin,
+            @Field("shmail") String shmail,
+            @Field("shgst") String shgst,
+            @Field("shpan") String shpan,
+            @Field("shbankname") String shbankname,
+            @Field("shbranch") String shbranch,
+            @Field("shaccno") String shaccn,
+            @Field("shsqft") String shsqft,
+            @Field("shlic") String shlic,
+            @Field("shtiming") String shtiming);
+
+
 }

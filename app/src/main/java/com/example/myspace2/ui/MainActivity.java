@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myspace2.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    private static int splash_timeout = 5000;
+    private static int splash_timeout = 3000;
 
     private ActivityMainBinding binding;
     private Context context = this;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(context, LoginActivity.class);
+                Intent i = new Intent(context, DashboardActivity.class);
 
                 startActivity(i);
 
