@@ -1,7 +1,7 @@
-package com.example.myspace2.Network;
+package com.example.myspacevendor.Network;
 
 
-import com.example.myspace2.utils.Config;
+import com.example.myspacevendor.utils.Config;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

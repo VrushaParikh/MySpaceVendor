@@ -1,4 +1,4 @@
-package com.example.myspace2.model;
+package com.example.myspacevendor.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

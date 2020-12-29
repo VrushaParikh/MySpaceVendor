@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MslotActivity"
+    android:background="#CAC5C5">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CAC5C5"
+        android:fillViewport="false">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/slot1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="15dp">
+
+            <LinearLayout
+                android:id="@+id/slot"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/slotv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Time Slot information"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#00008B"
+                    android:textSize="18sp" />
+
+
+                <TextView
+                    android:id="@+id/durationtv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/slotv"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+
+                    android:text="Select your slot duration"
+                    android:textColor="#171616"
+                    android:textSize="16sp" />
+
+                <Spinner
+                    android:id="@+id/spinDura"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="5dp"
+                    android:entries="@array/duration"
+                    android:padding="8dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="#0E0E0E"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/slottv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="Select your total number of slot"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#171616"
+                    android:textSize="16sp" />
+                <Spinner
+                android:id="@+id/spinno"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:entries="@array/no"
+                android:padding="8dp"
+                android:textColor="#0E0E0E"
+                android:textStyle="bold" />
+
+
+                <Button
+                    android:id="@+id/slot_submit"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:text="Submit"
+                    />
+
+
+
+            </LinearLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>

@@ -1,4 +1,5 @@
-package com.example.myspace2.ui;
+package com.example.myspacevendor.ui;
+
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,21 +7,21 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myspace2.databinding.ActivityDashboardBinding;
+import com.example.myspace2.databinding.ActivityAdminDashBinding;
 
+public class AdminDashActivity extends AppCompatActivity
+{
 
-public class DashboardActivity extends AppCompatActivity {
-
-    private ActivityDashboardBinding binding;
+    private ActivityAdminDashBinding binding;
     private Context context = this;
 
-    private static final String TAG = "DashboardActivity";
+    private static final String TAG = "AdminDashActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityDashboardBinding.inflate(getLayoutInflater());
+        binding = ActivityAdminDashBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         init();
@@ -35,8 +36,10 @@ public class DashboardActivity extends AppCompatActivity {
 
     private void clickListener() {
 
-        binding.shopInfo.setOnClickListener(v -> openActivity(ShopInfoActivity.class));
-        binding.img1.setOnClickListener(v -> openActivity(ShopInfoActivity.class));
+        binding.mngTnp.setOnClickListener(v -> openActivity(TermsPoliciesActivity.class));
+        binding.img3.setOnClickListener(v -> openActivity(TermsPoliciesActivity.class));
+
+
 
     }
 
@@ -45,6 +48,9 @@ public class DashboardActivity extends AppCompatActivity {
         Intent intent = new Intent(context, aclass);
         startActivity(intent);
     }
+
+
+
 
 
 }

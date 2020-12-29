@@ -1,4 +1,4 @@
-package com.example.myspace2.ui;
+package com.example.myspacevendor.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myspace2.databinding.ActivityMainBinding;
+import com.example.myspacevendor.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private static int splash_timeout = 3000;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(context, DashboardActivity.class);
+                Intent i = new Intent(context, LoginActivity.class);
 
                 startActivity(i);
 

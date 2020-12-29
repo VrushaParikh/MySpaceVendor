@@ -1,4 +1,4 @@
-package com.example.myspace2.ui;
+package com.example.myspacevendor.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,7 +26,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private ActivityRegisterBinding binding;
     private Context context = this;
 
-    private String fname, email, password, category;
+    private String fname, username, email, password, category;
     private String phno, ad_no, yy, mm, dd, dob;
 
     private static final String TAG = "RegistrationActivity";
@@ -48,6 +48,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         binding.register.setOnClickListener(view -> {
             fname = binding.edtFname.getText().toString().trim();
+            username = binding.edtUsername.getText().toString().trim();
             email = binding.edtEmail.getText().toString().trim();
             category = binding.spinCat.getSelectedItem().toString().trim();
 
@@ -67,9 +68,13 @@ public class RegistrationActivity extends AppCompatActivity {
 //            Log.d(TAG, "init: " + fname + "----" + email + "----" + category + "----" + dob + "----" + password + "----" + ad_no + "----" + phno);
 
 
-            if (TextUtils.isEmpty(fname) || TextUtils.isEmpty(email) || TextUtils.isEmpty(category) || TextUtils.isEmpty(dob) || TextUtils.isEmpty(password) || TextUtils.isEmpty(phno) || TextUtils.isEmpty(ad_no)) {
+            if (TextUtils.isEmpty(fname) || TextUtils.isEmpty(username) || TextUtils.isEmpty(email) || TextUtils.isEmpty(category) || TextUtils.isEmpty(dob) || TextUtils.isEmpty(password) || TextUtils.isEmpty(phno) || TextUtils.isEmpty(ad_no)) {
                 if (TextUtils.isEmpty(fname)) {
                     binding.edtFname.setError("Full Name Required!!");
+                }
+
+                if (TextUtils.isEmpty(username)) {
+                    binding.edtFname.setError("User Name Required!!");
                 }
 
                 if (TextUtils.isEmpty(email)) {
@@ -90,19 +95,19 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 return;
             }
-            doRegister(fname, email, category, dob, phno, password, ad_no);
+            doRegister(fname, username, email, category, dob, phno, password, ad_no);
 
         });
 
 
     }
 
-    private void doRegister(String fname, String email, String category, String dob, String phno, String pwd, String ad_no) {
+    private void doRegister(String fname, String username, String email, String category, String dob, String phno, String pwd, String ad_no) {
 
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
 
-        Call<ServerResponse> call = service.register(fname, email, category, dob, phno, pwd, ad_no);
+        Call<ServerResponse> call = service.register(fname, username, email, category, dob, phno, pwd, ad_no);
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {

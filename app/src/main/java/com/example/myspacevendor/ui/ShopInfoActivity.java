@@ -1,4 +1,4 @@
-package com.example.myspace2.ui;
+package com.example.myspacevendor.ui;
 
 import android.content.Context;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.example.myspace2.utils;
+package com.example.myspacevendor.utils;
 
 import android.content.Context;
 import android.widget.Toast;

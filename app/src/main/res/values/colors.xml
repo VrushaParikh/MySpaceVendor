@@ -11,6 +11,7 @@
     <color name="colorRed">#B00020</color>
     <color name="colorAccent">#03DAC6</color>
     <color name="colorMainTheme">#D3E4C8</color>
+    <color name="grey">#808080</color>
 
 
 </resources>

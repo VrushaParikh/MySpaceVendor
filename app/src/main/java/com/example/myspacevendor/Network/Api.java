@@ -1,6 +1,8 @@
-package com.example.myspace2.Network;
+package com.example.myspacevendor.Network;
 
-import com.example.myspace2.model.ServerResponse;
+import android.graphics.Bitmap;
+
+import com.example.myspacevendor.model.ServerResponse;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -23,6 +25,7 @@ public interface Api {
     @POST(my_url + "register")
     Call<ServerResponse> register(
             @Field("fname") String fname,
+            @Field("username") String username,
             @Field("email") String email,
             @Field("category") String category,
             @Field("dob") String dob,
@@ -50,6 +53,31 @@ public interface Api {
             @Field("shsqft") String shsqft,
             @Field("shlic") String shlic,
             @Field("shtiming") String shtiming);
+
+
+    @FormUrlEncoded
+    @POST(my_url + "offersdeals")
+    Call<ServerResponse> OffersDeals(
+            @Field("offname") String offname,
+            @Field("offdesc") String offdesc,
+            @Field("offsdate") String offsdate,
+            @Field("offedate") String offedate,
+            @Field("offbanner") Bitmap bitmap);
+
+
+    @FormUrlEncoded
+    @POST(my_url + "termspolicies")
+    Call<ServerResponse> TermsPolicies(
+            @Field("tpname") String tp,
+            @Field("tpdesc") String desc);
+
+    @FormUrlEncoded
+    @POST(my_url + "manageslot")
+    Call<ServerResponse> ManageSlot(
+            @Field("mduration") String tp,
+            @Field("mnumber") String desc);
+
+
 
 
 }

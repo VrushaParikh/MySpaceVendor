@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.TermsPoliciesActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/tnp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="false"
+            android:layout_centerHorizontal="false"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Terms and Policies"
+            android:textColor="#00008B"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/submit_tp"
+            android:layout_below="@id/tnp"
+            android:layout_margin="8dp">
+
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:id="@+id/terms_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tnp"
+                    android:orientation="vertical" />
+
+
+            </androidx.core.widget.NestedScrollView>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/submit_tp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="60dp"
+            android:src="@drawable/plus"
+            app:borderWidth="0dp"
+            app:elevation="6dp"
+            app:pressedTranslationZ="12dp" />
+
+
+        <Button
+            android:id="@+id/submit_tp"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:text="Submit" />
+
+    </RelativeLayout>
+
+
+</FrameLayout>

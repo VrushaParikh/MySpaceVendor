@@ -54,14 +54,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="Email ID"
+                android:text="User name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold" />
 
 
             <EditText
-                android:id="@+id/edt_email"
+                android:id="@+id/edt_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"

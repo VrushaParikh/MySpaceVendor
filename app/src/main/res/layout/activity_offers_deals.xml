@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="#C7CAC6"
+    tools:context=".ui.OffersDealsActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:fillViewport="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/block"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/shop_form"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/shop_in"
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="false"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="Offers an Deals"
+                        android:textColor="#00008B"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/edt_offername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Enter Offer Name"
+                        android:inputType="text"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+                    <EditText
+                        android:id="@+id/edt_offerdesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:gravity="start|top"
+                        android:hint="Enter Offer Description"
+                        android:inputType="textMultiLine"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+                    <TextView
+                        android:id="@+id/offerstart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginTop="2dp"
+                        android:text="Offers Start Date"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                        android:textColor="@android:color/black" />
+
+                    <DatePicker
+                        android:id="@+id/edt_offerstart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginRight="20dp"
+                        android:background="#11000000"
+                        android:calendarViewShown="false"
+                        android:datePickerMode="spinner" />
+
+                    <TextView
+                        android:id="@+id/offerend"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginTop="2dp"
+                        android:text="Offers End Date"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                        android:textColor="@color/colorBlack" />
+
+                    <DatePicker
+                        android:id="@+id/edt_offerend"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginRight="20dp"
+                        android:background="#11000000"
+                        android:calendarViewShown="false"
+                        android:datePickerMode="spinner" />
+
+                    <TextView
+                        android:id="@+id/uploadimg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginTop="2dp"
+                        android:text="Choose Banner to Upload"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                        android:textColor="@color/colorBlack" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/od_submit"
+                            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:gravity="center|center_horizontal"
+                            android:text="Upload"
+                            android:textColor="@color/colorWhite"
+                             />
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:srcCompat="@tools:sample/avatars" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <Button
+                android:id="@+id/submit"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="15dp"
+                android:gravity="center"
+                android:background="@color/colorPrimaryDark"
+                android:text="SUBMIT" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

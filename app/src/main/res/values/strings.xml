@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Space</string>
+    <string name="app_name">My Space Vendor</string>
     <string name="title"><u><b>Registration</b></u></string>
 
 
@@ -81,5 +81,28 @@
     </string-array>
 
     <string name="a1">Already have an account?</string>
+
+    <string-array name="duration">
+        <item>00</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+
+    </string-array>
+    <string-array name="no">
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>4</item>
+    <item>5</item>
+    <item>6</item>
+    <item>7</item>
+    <item>8</item>
+    <item>9</item>
+    <item>10</item>
+    <item>11</item>
+    <item>12</item>
+    </string-array>
+
 
 </resources>
