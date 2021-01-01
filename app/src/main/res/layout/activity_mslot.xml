@@ -11,7 +11,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#CAC5C5"
+        android:background="#EDF3EA"
         android:fillViewport="false">
 
         <androidx.cardview.widget.CardView
@@ -38,6 +38,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="Time Slot information"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -50,12 +51,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/slotv"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-
                     android:text="Select your slot duration"
+
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="#171616"
                     android:textSize="16sp" />
 
@@ -63,11 +64,11 @@
                     android:id="@+id/spinDura"
                     android:layout_width="wrap_content"
                     android:layout_height="45dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
                     android:entries="@array/duration"
                     android:padding="8dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginLeft="15dp"
                     android:textColor="#0E0E0E"
                     android:textStyle="bold" />
 
@@ -75,24 +76,25 @@
                     android:id="@+id/slottv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginLeft="15dp"
                     android:text="Select your total number of slot"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="#171616"
                     android:textSize="16sp" />
+
                 <Spinner
-                android:id="@+id/spinno"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
-                android:entries="@array/no"
-                android:padding="8dp"
-                android:textColor="#0E0E0E"
-                android:textStyle="bold" />
+                    android:id="@+id/spinno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:entries="@array/no"
+                    android:padding="8dp"
+                    android:textColor="#0E0E0E"
+                    android:textStyle="bold" />
 
 
                 <Button
@@ -108,19 +110,13 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="15dp"
                     android:gravity="center"
-                    android:text="Submit"
-                    />
-
+                    android:text="Submit" />
 
 
             </LinearLayout>
 
 
-
         </androidx.cardview.widget.CardView>
-
-
-
 
 
     </androidx.core.widget.NestedScrollView>

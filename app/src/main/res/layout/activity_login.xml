@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D3E4C8"
+    android:background="#E8EFE3"
     tools:context=".ui.LoginActivity">
 
     <ImageView
@@ -54,14 +54,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="User name"
+                android:text="Email ID"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold" />
 
 
             <EditText
-                android:id="@+id/edt_username"
+                android:id="@+id/edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"

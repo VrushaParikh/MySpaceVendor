@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     private final Context context = this;
 
-    private String email, password;
+    private String vendor_email, vendor_pwd;
 
     private static final String TAG = "LoginActivity";
 
@@ -47,34 +47,42 @@ public class LoginActivity extends AppCompatActivity {
 
         binding.login.setOnClickListener(view -> {
 
-            email = binding.edtUsername.getText().toString().trim();
-            password = binding.edtPwd.getText().toString().trim();
+            vendor_email = binding.edtEmail.getText().toString().trim();
+            vendor_pwd = binding.edtPwd.getText().toString().trim();
 
-            Log.d(TAG, "init: " + binding.edtUsername.getText().toString().trim() + "----" + binding.edtPwd.getText().toString().trim());
+            Log.d(TAG, "init: " + binding.edtEmail.getText().toString().trim() + "----" + binding.edtPwd.getText().toString().trim());
 
 
-            if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                binding.edtPwd.setError("All Fields are Required!!");
+            if (TextUtils.isEmpty(vendor_email) || TextUtils.isEmpty(vendor_pwd))
+            {
+                if (TextUtils.isEmpty(vendor_email)) {
+                    binding.edtEmail.setError("Email Required!!");
+                }
+
+                if (TextUtils.isEmpty(vendor_pwd)) {
+                    binding.edtPwd.setError("Password Required!!");
+                }
+
                 return;
             }
 
-            doLogin(email, password);
+            doLogin(vendor_email, vendor_pwd);
         });
 
 
     }
 
-    private void doLogin(String email, String password) {
+    private void doLogin(String vendor_email, String vendor_pwd) {
 
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
 
-        Call<ServerResponse> call = service.login(email, password);
+        Call<ServerResponse> call = service.login(vendor_email, vendor_pwd);
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
-//                Config.showToast(context, response.body().getMessage());
-                Intent intent = new Intent(LoginActivity.this, CustDashActivity.class);
+                Config.showToast(context, response.body().getMessage());
+                Intent intent = new Intent(LoginActivity.this, VendorDashboardActivity.class);
                 startActivity(intent);
             }
 

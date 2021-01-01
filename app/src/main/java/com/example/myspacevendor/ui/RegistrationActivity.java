@@ -9,11 +9,11 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myspace2.Network.Api;
-import com.example.myspace2.Network.AppConfig;
-import com.example.myspace2.databinding.ActivityRegisterBinding;
-import com.example.myspace2.model.ServerResponse;
-import com.example.myspace2.utils.Config;
+import com.example.myspacevendor.Network.Api;
+import com.example.myspacevendor.Network.AppConfig;
+import com.example.myspacevendor.databinding.ActivityRegisterBinding;
+import com.example.myspacevendor.model.ServerResponse;
+import com.example.myspacevendor.utils.Config;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,8 +26,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private ActivityRegisterBinding binding;
     private Context context = this;
 
-    private String fname, username, email, password, category;
-    private String phno, ad_no, yy, mm, dd, dob;
+    private String vendor_name, vendor_email, vendor_pwd, vendor_mobile, vendor_aadhar;
 
     private static final String TAG = "RegistrationActivity";
 
@@ -47,71 +46,59 @@ public class RegistrationActivity extends AppCompatActivity {
     private void init() {
 
         binding.register.setOnClickListener(view -> {
-            fname = binding.edtFname.getText().toString().trim();
-            username = binding.edtUsername.getText().toString().trim();
-            email = binding.edtEmail.getText().toString().trim();
-            category = binding.spinCat.getSelectedItem().toString().trim();
-
-            yy = String.valueOf(binding.datePicker.getYear());
-            mm = String.valueOf(binding.datePicker.getMonth() + 1);
-            dd = String.valueOf(binding.datePicker.getDayOfMonth());
+            vendor_name = binding.edtFname.getText().toString().trim();
+            vendor_email = binding.edtEmail.getText().toString().trim();
+            vendor_pwd = binding.edtPwd.getText().toString().trim();
+            vendor_mobile = binding.edtPh.getText().toString().trim();
+            vendor_aadhar = binding.edtAdno.getText().toString().trim();
 
 
-            dob = yy + "-" + mm + "-" + dd;
+//            Log.d(TAG, "init: " + vendor_name + "----" + vendor_email + "----" + vendor_pwd + "----" + vendor_aadhar + "----" + vendor_mobile);
 
 
-            password = binding.edtPwd.getText().toString().trim();
-            phno = binding.edtPh.getText().toString().trim();
-            ad_no = binding.edtAdno.getText().toString().trim();
-
-
-//            Log.d(TAG, "init: " + fname + "----" + email + "----" + category + "----" + dob + "----" + password + "----" + ad_no + "----" + phno);
-
-
-            if (TextUtils.isEmpty(fname) || TextUtils.isEmpty(username) || TextUtils.isEmpty(email) || TextUtils.isEmpty(category) || TextUtils.isEmpty(dob) || TextUtils.isEmpty(password) || TextUtils.isEmpty(phno) || TextUtils.isEmpty(ad_no)) {
-                if (TextUtils.isEmpty(fname)) {
+            if (TextUtils.isEmpty(vendor_name) || TextUtils.isEmpty(vendor_email)  || TextUtils.isEmpty(vendor_pwd) || TextUtils.isEmpty(vendor_mobile) || TextUtils.isEmpty(vendor_aadhar)) {
+                if (TextUtils.isEmpty(vendor_name)) {
                     binding.edtFname.setError("Full Name Required!!");
                 }
 
-                if (TextUtils.isEmpty(username)) {
-                    binding.edtFname.setError("User Name Required!!");
-                }
-
-                if (TextUtils.isEmpty(email)) {
+                if (TextUtils.isEmpty(vendor_email)) {
                     binding.edtEmail.setError("Email Required!!");
                 }
 
-                if (TextUtils.isEmpty(password)) {
+                if (TextUtils.isEmpty(vendor_pwd)) {
                     binding.edtPwd.setError("Password Required!!");
                 }
 
-                if (TextUtils.isEmpty(phno)) {
+                if (TextUtils.isEmpty(vendor_mobile)) {
                     binding.edtPh.setError("Phone Number Required!!");
                 }
 
-                if (TextUtils.isEmpty(ad_no)) {
+                if (TextUtils.isEmpty(vendor_aadhar)) {
                     binding.edtAdno.setError("Aadhaar Number Required!!");
                 }
 
                 return;
             }
-            doRegister(fname, username, email, category, dob, phno, password, ad_no);
+
+            doRegister(vendor_name, vendor_email, vendor_pwd, vendor_mobile, vendor_aadhar);
 
         });
 
 
     }
 
-    private void doRegister(String fname, String username, String email, String category, String dob, String phno, String pwd, String ad_no) {
+    private void doRegister(String vendor_name, String vendor_email, String vendor_pwd, String vendor_mobile, String vendor_aadhar) {
 
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
 
-        Call<ServerResponse> call = service.register(fname, username, email, category, dob, phno, pwd, ad_no);
+        Call<ServerResponse> call = service.Register(vendor_name, vendor_email, vendor_pwd, vendor_mobile, vendor_aadhar);
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 Config.showToast(context, response.body().getMessage());
+                Intent intent = new Intent(RegistrationActivity.this, VendorDashboardActivity.class);
+                startActivity(intent);
             }
 
             @Override

@@ -12,57 +12,49 @@ import retrofit2.http.POST;
 
 public interface Api {
 
-    String my_url = "Api.php?apicall=";
+    String my_url = "Vendor_Api.php?apicall=";
 
     @FormUrlEncoded
     @POST(my_url + "login")
     Call<ServerResponse> login(
-            @Field("email") String email,
-            @Field("password") String password);
+            @Field("vendor_email") String vendor_email,
+            @Field("vendor_pwd") String vendor_pwd);
 
 
     @FormUrlEncoded
     @POST(my_url + "register")
-    Call<ServerResponse> register(
-            @Field("fname") String fname,
-            @Field("username") String username,
-            @Field("email") String email,
-            @Field("category") String category,
-            @Field("dob") String dob,
-            @Field("phno") String phno,
-            @Field("pwd") String pwd,
-            @Field("ad_no") String ad_no);
-
+    Call<ServerResponse> Register(
+            @Field("vendor_name") String vendor_name,
+            @Field("vendor_email") String vendor_email,
+            @Field("vendor_pwd") String vendor_pwd,
+            @Field("vendor_mobile") String vendor_mobile,
+            @Field("vendor_aadhar") String vendor_aadhar);
 
     @FormUrlEncoded
     @POST(my_url + "shopregister")
     Call<ServerResponse> ShopRegister(
-            @Field("shname") String shname,
-            @Field("shadd") String shadd,
-            @Field("shcategory") String shcategory,
-            @Field("sharea") String sharea,
-            @Field("shcity") String shcity,
-            @Field("shstate") String shstate,
-            @Field("shpin") String shpin,
-            @Field("shmail") String shmail,
-            @Field("shgst") String shgst,
-            @Field("shpan") String shpan,
-            @Field("shbankname") String shbankname,
-            @Field("shbranch") String shbranch,
-            @Field("shaccno") String shaccn,
-            @Field("shsqft") String shsqft,
-            @Field("shlic") String shlic,
-            @Field("shtiming") String shtiming);
+            @Field("shop_name") String shop_name,
+            @Field("shop_add") String shop_add,
+            @Field("shop_pincode") String shop_pincode,
+            @Field("shop_email") String shop_email,
+            @Field("shop_gst") String shop_gst,
+            @Field("shop_pan") String shop_pan,
+            @Field("shop_bank_name") String shop_bank_name,
+            @Field("shop_ifsc") String shop_ifsc,
+            @Field("shop_acc_no") String shop_acc_no,
+            @Field("shop_sqft") String shop_sqft,
+            @Field("shop_lic_no") String shop_lic_no,
+            @Field("shop_timing") String shop_timing);
 
 
     @FormUrlEncoded
     @POST(my_url + "offersdeals")
     Call<ServerResponse> OffersDeals(
-            @Field("offname") String offname,
-            @Field("offdesc") String offdesc,
-            @Field("offsdate") String offsdate,
-            @Field("offedate") String offedate,
-            @Field("offbanner") Bitmap bitmap);
+            @Field("offer_name") String offer_name,
+            @Field("offer_desc") String offer_desc,
+            @Field("offer_start") String offer_start,
+            @Field("offer_end") String offer_end,
+            @Field("offer_banner") String image);
 
 
     @FormUrlEncoded
@@ -76,8 +68,6 @@ public interface Api {
     Call<ServerResponse> ManageSlot(
             @Field("mduration") String tp,
             @Field("mnumber") String desc);
-
-
 
 
 }

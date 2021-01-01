@@ -10,12 +10,12 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myspace2.Network.Api;
-import com.example.myspace2.Network.AppConfig;
-import com.example.myspace2.databinding.ActivityDashboardBinding;
-import com.example.myspace2.databinding.ActivityMslotBinding;
-import com.example.myspace2.model.ServerResponse;
-import com.example.myspace2.utils.Config;
+import com.example.myspacevendor.Network.Api;
+import com.example.myspacevendor.Network.AppConfig;
+import com.example.myspacevendor.databinding.ActivityDashboardBinding;
+import com.example.myspacevendor.databinding.ActivityMslotBinding;
+import com.example.myspacevendor.model.ServerResponse;
+import com.example.myspacevendor.utils.Config;
 
 import retrofit2.Call;
 import retrofit2.Callback;

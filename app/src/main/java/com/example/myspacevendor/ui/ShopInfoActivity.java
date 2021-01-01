@@ -1,17 +1,19 @@
 package com.example.myspacevendor.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myspace2.Network.Api;
-import com.example.myspace2.Network.AppConfig;
-import com.example.myspace2.databinding.ActivityShopInfoBinding;
-import com.example.myspace2.model.ServerResponse;
-import com.example.myspace2.utils.Config;
+import com.example.myspacevendor.Network.Api;
+import com.example.myspacevendor.Network.AppConfig;
+
+import com.example.myspacevendor.databinding.ActivityShopInfoBinding;
+import com.example.myspacevendor.model.ServerResponse;
+import com.example.myspacevendor.utils.Config;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,8 +24,8 @@ public class ShopInfoActivity extends AppCompatActivity {
     private ActivityShopInfoBinding binding;
     private Context context = this;
 
-    private String shname, shadd, shcategory, sharea, shcity, shstate, shpin, shmail, shgst, shpan, shbankname, shbranch;
-    private String shaccn, shlic, shsqft, shtiming;
+    private String  shop_name, shop_add, shop_pincode, shop_email, shop_gst, shop_pan, shop_bank_name, shop_ifsc,
+            shop_acc_no, shop_sqft, shop_lic_no, shop_timing;
 
     private String start, mstart, sampm, end, mend, eampm;
 
@@ -44,23 +46,17 @@ public class ShopInfoActivity extends AppCompatActivity {
     private void init()
     {
         binding.shReg.setOnClickListener(view -> {
-            shname = binding.edtSname.getText().toString().trim();
-            shcategory = binding.spinCat.getSelectedItem().toString().trim();
-            shadd = binding.edtAdd.getText().toString().trim();
-            sharea = binding.edtArea.getText().toString().trim();
-            shcity = binding.edtCity.getText().toString().trim();
-            shstate = binding.edtState.getText().toString().trim();
-            shmail = binding.edtMail.getText().toString().trim();
-            shpin =binding.edtPincode.getText().toString().trim();
-
-            shbankname = binding.edtBankna.getText().toString().trim();
-            shbranch = binding.edtBankbranch.getText().toString().trim();
-            shaccn = binding.edtBankacc.getText().toString().trim();
-
-            shgst = binding.edtSgst.getText().toString().trim();
-            shpan = binding.edtSpan.getText().toString().trim();
-            shsqft = binding.edtSsqft.getText().toString().trim();
-            shlic = binding.edtLic.getText().toString().trim();
+            shop_name = binding.edtSname.getText().toString().trim();
+            shop_add = binding.edtAdd.getText().toString().trim();
+            shop_pincode =binding.edtPincode.getText().toString().trim();
+            shop_email = binding.edtMail.getText().toString().trim();
+            shop_gst = binding.edtSgst.getText().toString().trim();
+            shop_pan = binding.edtSpan.getText().toString().trim();
+            shop_bank_name = binding.edtBankna.getText().toString().trim();
+            shop_ifsc = binding.edtBankifsc.getText().toString().trim();
+            shop_acc_no = binding.edtBankacc.getText().toString().trim();
+            shop_sqft = binding.edtSsqft.getText().toString().trim();
+            shop_lic_no = binding.edtLic.getText().toString().trim();
 
             start = binding.spinStart.getSelectedItem().toString().trim();
             mstart = binding.spinStartMin.getSelectedItem().toString().trim();
@@ -70,74 +66,65 @@ public class ShopInfoActivity extends AppCompatActivity {
             mend = binding.spinEndMin.getSelectedItem().toString().trim();
             eampm = binding.spinEndAmPm.getSelectedItem().toString().trim();
 
-            shtiming = start+":"+mstart+sampm+"-"+end+":"+mend+eampm;
+            shop_timing = start+":"+mstart+sampm+"-"+end+":"+mend+eampm;
 
-            Log.d(TAG, "init: " + shname + "----" + start + "----" + mstart + "----" + sampm + "----" + end + "----" + mend + "----" + eampm);
+//            Log.d(TAG, "init: " + shop_name + "----" + start + "----" + mstart + "----" + sampm + "----" + end + "----" + mend + "----" + eampm);
+            Log.d(TAG, "init: " + shop_name + "----" + shop_timing+ "----" + shop_lic_no);
 
-            if (TextUtils.isEmpty(shname) || TextUtils.isEmpty(shcategory) || TextUtils.isEmpty(shadd) || TextUtils.isEmpty(shcity) || TextUtils.isEmpty(shstate) || TextUtils.isEmpty(shmail) || TextUtils.isEmpty(shpin)
-                    || TextUtils.isEmpty(shbankname) || TextUtils.isEmpty(shbranch) || TextUtils.isEmpty(shaccn)
-                    || TextUtils.isEmpty(shgst) || TextUtils.isEmpty(shpan) || TextUtils.isEmpty(shsqft)
-                    || TextUtils.isEmpty(shlic) || TextUtils.isEmpty(sharea))
+            if (TextUtils.isEmpty(shop_name) || TextUtils.isEmpty(shop_add) || TextUtils.isEmpty(shop_email) || TextUtils.isEmpty(shop_pincode)
+                    || TextUtils.isEmpty(shop_bank_name) || TextUtils.isEmpty(shop_ifsc) || TextUtils.isEmpty(shop_acc_no)
+                    || TextUtils.isEmpty(shop_gst) || TextUtils.isEmpty(shop_pan) || TextUtils.isEmpty(shop_sqft)
+                    || TextUtils.isEmpty(shop_lic_no))
             {
-                if (TextUtils.isEmpty(shname)) {
+                if (TextUtils.isEmpty(shop_name)) {
                     binding.edtSname.setError("Shop Name Required!!");
                 }
 
-                if (TextUtils.isEmpty(shadd)) {
+                if (TextUtils.isEmpty(shop_add)) {
                     binding.edtAdd.setError("Address Required!!");
                 }
 
-                if (TextUtils.isEmpty(sharea)) {
-                    binding.edtArea.setError("Area Required!!");
-                }
 
-                if (TextUtils.isEmpty(shcity)) {
-                    binding.edtCity.setError("City Required!!");
-                }
-
-                if (TextUtils.isEmpty(shstate)) {
-                    binding.edtState.setError("State Required!!");
-                }
-
-                if (TextUtils.isEmpty(shmail)) {
+                if (TextUtils.isEmpty(shop_email)) {
                     binding.edtMail.setError("Email Required!!");
                 }
 
-                if (TextUtils.isEmpty(shpin)) {
+                if (TextUtils.isEmpty(shop_pincode)) {
                     binding.edtPincode.setError("Pincode Required!!");
                 }
 
-                if (TextUtils.isEmpty(shbankname)) {
+                if (TextUtils.isEmpty(shop_bank_name)) {
                     binding.edtBankna.setError("Bank Name Required!!");
                 }
 
-                if (TextUtils.isEmpty(shbranch)) {
-                    binding.edtBankbranch.setError("Branch Name Required!!");
+                if (TextUtils.isEmpty(shop_ifsc)) {
+                    binding.edtBankifsc.setError("IDSC Number Required!!");
                 }
 
-                if (TextUtils.isEmpty(shaccn)) {
+                if (TextUtils.isEmpty(shop_acc_no)) {
                     binding.edtBankacc.setError("Account Number Required!!");
                 }
 
-                if (TextUtils.isEmpty(shgst)) {
+                if (TextUtils.isEmpty(shop_gst)) {
                     binding.edtSgst.setError("GST Number Required!!");
                 }
 
-                if (TextUtils.isEmpty(shpan)) {
+                if (TextUtils.isEmpty(shop_pan)) {
                     binding.edtSpan.setError("PAN Number Required!!");
                 }
 
-                if (TextUtils.isEmpty(shlic)) {
+                if (TextUtils.isEmpty(shop_lic_no)) {
                     binding.edtLic.setError("License Number Required!!");
                 }
 
-                if (TextUtils.isEmpty(shsqft)) {
+                if (TextUtils.isEmpty(shop_sqft)) {
                     binding.edtSsqft.setError("Shop Area Required!!");
                 }
 
             }
 
-            doShopRegister(shname, shadd, shcategory, sharea, shcity, shstate, shpin, shmail, shgst, shpan, shbankname, shbranch, shaccn, shsqft, shlic, shtiming);
+            doShopRegister(shop_name, shop_add, shop_pincode, shop_email, shop_gst, shop_pan, shop_bank_name, shop_ifsc,
+                    shop_acc_no, shop_sqft, shop_lic_no, shop_timing);
 
         });
 
@@ -145,19 +132,21 @@ public class ShopInfoActivity extends AppCompatActivity {
     }
 
 
-    private void doShopRegister(String shname, String shadd, String shcategory, String sharea, String shcity, String shstate, String shpin,
-                                String shmail, String shgst, String shpan, String shbankname, String shbranch, String shaccn, String shsqft,
-                                String shlic, String shtiming)
+    private void doShopRegister(String shop_name, String shop_add, String shop_pincode, String shop_email,
+                                String shop_gst, String shop_pan, String shop_bank_name, String shop_ifsc,
+                                String shop_acc_no, String shop_sqft, String shop_lic_no, String shop_timing)
     {
 
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
 
-        Call<ServerResponse> call = service.ShopRegister(shname, shadd, shcategory, sharea, shcity, shstate, shpin, shmail, shgst, shpan, shbankname, shbranch, shaccn, shsqft, shlic, shtiming);
+        Call<ServerResponse> call = service.ShopRegister(shop_name, shop_add, shop_pincode, shop_email, shop_gst, shop_pan, shop_bank_name, shop_ifsc, shop_acc_no, shop_sqft, shop_lic_no, shop_timing);
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 Config.showToast(context, response.body().getMessage());
+                Intent intent = new Intent(ShopInfoActivity.this, VendorDashboardActivity.class);
+                startActivity(intent);
             }
 
             @Override

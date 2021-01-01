@@ -7,17 +7,20 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myspace2.Network.Api;
-import com.example.myspace2.Network.AppConfig;
-import com.example.myspace2.R;
-import com.example.myspace2.databinding.ActivityOffersDealsBinding;
-import com.example.myspace2.model.ServerResponse;
-import com.example.myspace2.utils.Config;
+import com.example.myspacevendor.Network.Api;
+import com.example.myspacevendor.Network.AppConfig;
+import com.example.myspacevendor.R;
 
+import com.example.myspacevendor.databinding.ActivityOffersDealsBinding;
+import com.example.myspacevendor.model.ServerResponse;
+import com.example.myspacevendor.utils.Config;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import retrofit2.Call;
@@ -31,7 +34,8 @@ public class OffersDealsActivity extends AppCompatActivity {
     private ActivityOffersDealsBinding binding;
     private Context context = this;
 
-    private String offname, offdesc, offsdate, offedate, sdd, smm, syy, edd, emm, eyy;
+    private String offer_name, offer_desc, offer_start, offer_end, sdd, smm, syy, edd, emm, eyy;
+
 
     private static final String TAG = "OffersDealsActivity";
 
@@ -61,50 +65,48 @@ public class OffersDealsActivity extends AppCompatActivity {
     private void init() {
 
         binding.submit.setOnClickListener(view -> {
-           offname = binding.edtOffername.getText().toString().trim();
-           offdesc = binding.edtOfferdesc.getText().toString().trim();
+            offer_name = binding.edtOffername.getText().toString().trim();
+            offer_desc = binding.edtOfferdesc.getText().toString().trim();
 
             syy = String.valueOf(binding.edtOfferstart.getYear());
             smm = String.valueOf(binding.edtOfferstart.getMonth() + 1);
             sdd = String.valueOf(binding.edtOfferstart.getDayOfMonth());
 
-            offsdate = syy + "-" + smm + "-" + sdd;
+            offer_start = syy + "-" + smm + "-" + sdd;
 
             eyy = String.valueOf(binding.edtOfferend.getYear());
             emm = String.valueOf(binding.edtOfferend.getMonth() + 1);
             edd = String.valueOf(binding.edtOfferend.getDayOfMonth());
 
-            offedate = eyy + "-" + emm + "-" + edd;
+            offer_end = eyy + "-" + emm + "-" + edd;
 
 
-          Log.d(TAG, "init: " + offname + "----" + offsdate + "----" + offedate + "----" + offdesc);
+            Log.d(TAG, "init: " + offer_name + "----" + offer_start + "----" + offer_end + "----" + offer_desc);
 
-            if (TextUtils.isEmpty(offname) || TextUtils.isEmpty(offdesc))
-            {
-                if (TextUtils.isEmpty(offname)) {
+            if (TextUtils.isEmpty(offer_name) || TextUtils.isEmpty(offer_desc)) {
+                if (TextUtils.isEmpty(offer_name)) {
                     binding.edtOffername.setError("Offer Name Required!!");
                 }
 
-                if (TextUtils.isEmpty(offdesc)) {
+                if (TextUtils.isEmpty(offer_desc)) {
                     binding.edtOfferdesc.setError("Offer Description Required!!");
                 }
 
                 return;
             }
 
-            doOffersDealsRegister(offname, offdesc, offsdate, offedate, bitmap);
+            doOffersDealsRegister(offer_name, offer_desc, offer_start, offer_end, bitmap);
 
         });
 
 
     }
 
-    private void doOffersDealsRegister(String offname, String offdesc, String offsdate, String offedate, Bitmap bitmap)
-    {
+    private void doOffersDealsRegister(String offname, String offdesc, String offsdate, String offedate, Bitmap bitmap) {
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
 
-        Call<ServerResponse> call = service.OffersDeals(offname, offdesc, offsdate, offedate, bitmap);
+        Call<ServerResponse> call = service.OffersDeals(offname, offdesc, offsdate, offedate, getImageString(bitmap));
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
@@ -148,6 +150,18 @@ public class OffersDealsActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+
+    /*----------------------- Bitmap to Image String -------------------------------*/
+
+    public String getImageString(Bitmap bitmap) {
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+        byte[] byteFormat = stream.toByteArray();
+
+        return Base64.encodeToString(byteFormat, Base64.NO_WRAP);
     }
 
 

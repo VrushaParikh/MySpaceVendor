@@ -22,14 +22,14 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myspace2.Network.Api;
-import com.example.myspace2.Network.AppConfig;
-import com.example.myspace2.R;
+import com.example.myspacevendor.Network.Api;
+import com.example.myspacevendor.Network.AppConfig;
+import com.example.myspacevendor.R;
 
-import com.example.myspace2.databinding.ActivityTermsPoliciesBinding;
-import com.example.myspace2.model.ServerResponse;
-import com.example.myspace2.model.TermsAndConditions;
-import com.example.myspace2.utils.Config;
+import com.example.myspacevendor.databinding.ActivityTermsPoliciesBinding;
+import com.example.myspacevendor.model.ServerResponse;
+import com.example.myspacevendor.model.TermsAndConditions;
+import com.example.myspacevendor.utils.Config;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

@@ -50,7 +50,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="0dp"
                         android:gravity="center"
-                        android:text="Offers an Deals"
+                        android:text="Offers and Deals"
                         android:textColor="#00008B"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -173,7 +173,6 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="15dp"
                 android:gravity="center"
-                android:background="@color/colorPrimaryDark"
                 android:text="SUBMIT" />
 
         </LinearLayout>

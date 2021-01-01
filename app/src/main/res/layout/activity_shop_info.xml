@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ShopInfoActivity"
-    android:background="#CAC5C5">
+    tools:context=".ui.ShopInfoActivity">
 
     <TextView
         android:id="@+id/shop_form"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0dp"
         android:gravity="center"
         android:text="Shop Registration"
-        android:textColor="#00008B"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -77,14 +76,6 @@
                         android:inputType="text"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-                    <Spinner
-                        android:id="@+id/spinCat"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:entries="@array/category"
-                        android:padding="8dp"
-                        android:textColor="#0E0E0E"
-                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/edt_add"
@@ -94,30 +85,6 @@
                         android:inputType="text"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-                    <EditText
-                        android:id="@+id/edt_area"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Enter Shop Area"
-                        android:inputType="text"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
-                    <EditText
-                        android:id="@+id/edt_city"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Enter Shop City"
-                        android:inputType="text"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
-
-                    <EditText
-                        android:id="@+id/edt_state"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Enter Shop State"
-                        android:inputType="text"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
                     <EditText
                         android:id="@+id/edt_pincode"
@@ -191,10 +158,10 @@
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
                     <EditText
-                        android:id="@+id/edt_bankbranch"
+                        android:id="@+id/edt_bankifsc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Bank's Branch Name "
+                        android:hint="Enter Bank's IFSC Number"
                         android:inputType="text"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
@@ -281,7 +248,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:layout_margin="6dp"
                         android:orientation="horizontal"
                         android:padding="8dp">
 
@@ -371,8 +338,8 @@
 
             <Button
                 android:id="@+id/sh_reg"
-                android:layout_width="match_parent"
                 style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="10dp"
@@ -382,8 +349,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="15dp"
                 android:gravity="center"
-                android:text="Register"
-                 />
+                android:text="Register" />
 
         </LinearLayout>
 

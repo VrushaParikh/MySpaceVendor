@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myspace2.databinding.ActivityDashboardBinding;
+import com.example.myspacevendor.databinding.ActivityDashboardBinding;
 
 
 public class VendorDashboardActivity extends AppCompatActivity {

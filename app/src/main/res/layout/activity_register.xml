@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EAEFE6"
+    android:background="#E8EFE3"
     tools:context=".ui.RegistrationActivity">
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
         android:fillViewport="false">
@@ -29,7 +29,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#B9D3E4C8"
                 android:orientation="vertical">
 
                 <TextView
@@ -65,27 +64,6 @@
                     android:ems="10"
                     android:inputType="textPersonName" />
 
-                <TextView
-                    android:id="@+id/username"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-
-                    android:layout_marginRight="20dp"
-                    android:text="User Name"
-                    android:textColor="#0E0E0E"
-                    android:textSize="16dp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/edt_username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginRight="20dp"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
 
                 <TextView
                     android:id="@+id/ename"
@@ -109,51 +87,6 @@
                     android:ems="10"
                     android:inputType="textEmailAddress" />
 
-                <TextView
-                    android:id="@+id/cat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginRight="20dp"
-                    android:text="Register as"
-                    android:textColor="#0E0E0E"
-                    android:textSize="16dp"
-                    android:textStyle="bold" />
-
-                <Spinner
-                    android:id="@+id/spinCat"
-                    android:layout_width="373dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginRight="20dp"
-                    android:entries="@array/user"
-                    android:textColor="#0E0E0E"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/dob"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginRight="20dp"
-                    android:text="Date of Birth"
-                    android:textColor="#0E0E0E"
-                    android:textSize="16dp"
-                    android:textStyle="bold" />
-
-                <DatePicker
-                    android:id="@+id/datePicker"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginRight="20dp"
-                    android:background="#11000000"
-                    android:calendarViewShown="false"
-                    android:datePickerMode="spinner" />
 
                 <TextView
                     android:id="@+id/phno"
@@ -227,12 +160,13 @@
                     style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="70dp"
-                    android:layout_marginLeft="70dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="70dp"
-                    android:layout_marginRight="70dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="15dp"
                     android:gravity="center"
                     android:text="Register" />
 

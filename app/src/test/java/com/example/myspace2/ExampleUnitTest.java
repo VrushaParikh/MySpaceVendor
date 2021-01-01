@@ -1,4 +1,4 @@
-package com.example.myspace2;
+package com.example.myspacevendor;
 
 import org.junit.Test;
 

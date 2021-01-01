@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myspace2.databinding.ActivityAdminDashBinding;
+import com.example.myspacevendor.databinding.ActivityAdminDashBinding;
 
 public class AdminDashActivity extends AppCompatActivity
 {
