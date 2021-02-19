@@ -22,7 +22,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class MslotActivity extends AppCompatActivity {
+public class MslotActivity extends AppCompatActivity
+{
 
     private ActivityMslotBinding binding;
     private Context context = this;
@@ -36,7 +37,6 @@ public class MslotActivity extends AppCompatActivity {
 
         binding = ActivityMslotBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         init();
 
 
@@ -45,19 +45,20 @@ public class MslotActivity extends AppCompatActivity {
 
 
 
-    private void init() {
-        binding.slotSubmit.setOnClickListener(view -> {
+    private void init()
+    {
+        binding.slotSubmit.setOnClickListener(view ->
+        {
             slotduration = binding.spinDura.getSelectedItem().toString().trim();
             totalslot = binding.spinno.getSelectedItem().toString().trim();
-
-
-            doManageSlot(slotduration, totalslot);
+             doManageSlot(slotduration, totalslot);
 
         });
 
     }
 
-    private void doManageSlot(String slotduration, String totalslot) {
+    private void doManageSlot(String slotduration, String totalslot)
+    {
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
 
@@ -76,11 +77,10 @@ public class MslotActivity extends AppCompatActivity {
     }
 
 
-    private void openActivity(Class aclass) {
+    private void openActivity(Class aclass)
+    {
         Intent intent = new Intent(context, aclass);
         startActivity(intent);
     }
-
-
 }
 

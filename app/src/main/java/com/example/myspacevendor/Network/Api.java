@@ -69,5 +69,12 @@ public interface Api {
             @Field("mduration") String tp,
             @Field("mnumber") String desc);
 
+    @FormUrlEncoded
+    @POST(my_url + "all_shop")
+    Call<ServerResponse> getAllShop(
+            @Field("vendor_id") String vd_id);
+
+
+
 
 }

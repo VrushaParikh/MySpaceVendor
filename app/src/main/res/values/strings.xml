@@ -1,7 +1,18 @@
 <resources>
-    <string name="app_name">My Space Vendor</string>
+    <string name="app_name">MySpace\nManager</string>
     <string name="title"><u><b>Registration</b></u></string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Edit Profile</string>
+    <string name="menu_slideshow">Settings</string>
 
     <string-array name="user">
         <item>Customer</item>
@@ -90,18 +101,18 @@
 
     </string-array>
     <string-array name="no">
-    <item>1</item>
-    <item>2</item>
-    <item>3</item>
-    <item>4</item>
-    <item>5</item>
-    <item>6</item>
-    <item>7</item>
-    <item>8</item>
-    <item>9</item>
-    <item>10</item>
-    <item>11</item>
-    <item>12</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
     </string-array>
 
 

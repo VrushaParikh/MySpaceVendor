@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/logo"
         android:gravity="center"
-        android:text="My Space"
+        android:text="My Space Manager"
         android:textColor="#00008B"
         android:textSize="40dp"
         android:textStyle="bold" />

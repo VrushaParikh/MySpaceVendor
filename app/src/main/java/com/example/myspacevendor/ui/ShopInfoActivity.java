@@ -145,7 +145,7 @@ public class ShopInfoActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 Config.showToast(context, response.body().getMessage());
-                Intent intent = new Intent(ShopInfoActivity.this, VendorDashboardActivity.class);
+                Intent intent = new Intent(ShopInfoActivity.this, DashboardActivity.class);
                 startActivity(intent);
             }
 

@@ -97,7 +97,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 Config.showToast(context, response.body().getMessage());
-                Intent intent = new Intent(RegistrationActivity.this, VendorDashboardActivity.class);
+                Intent intent = new Intent(RegistrationActivity.this, DashboardActivity.class);
                 startActivity(intent);
             }
 

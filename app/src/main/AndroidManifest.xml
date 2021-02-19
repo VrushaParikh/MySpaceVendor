@@ -3,6 +3,7 @@
     package="com.example.myspacevendor">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -12,31 +13,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MySpace2"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.MainActivity">
-             <intent-filter>
-                  <action android:name="android.intent.action.MAIN" />
 
-                  <category android:name="android.intent.category.LAUNCHER" />
-              </intent-filter>
+        <activity android:name=".ui.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.RegistrationActivity" />
-        <activity android:name=".ui.VendorDashboardActivity" />
+        <activity android:name=".ui.DashboardActivity" />
         <activity android:name=".ui.OffersDealsActivity" />
         <activity android:name=".ui.ShopInfoActivity" />
         <activity android:name=".ui.MslotActivity" />
         <activity android:name=".ui.AdminDashActivity" />
-        <activity
+        <activity android:name=".ui.ScanTokenActivity"/>
+        <activity android:name=".ui.SacnnerView"/>
+        <activity android:name=".ui.ShopListActivity">
+
+        </activity>
+                <activity
             android:name=".ui.TermsPoliciesActivity"
             android:windowSoftInputMode="adjustResize">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-
-
     </application>
 
 </manifest>

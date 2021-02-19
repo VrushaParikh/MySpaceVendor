@@ -14,6 +14,7 @@ import com.example.myspacevendor.Network.AppConfig;
 import com.example.myspacevendor.databinding.ActivityLoginBinding;
 import com.example.myspacevendor.model.ServerResponse;
 import com.example.myspacevendor.utils.Config;
+import com.example.myspacevendor.utils.SharedPrefManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,8 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             Log.d(TAG, "init: " + binding.edtEmail.getText().toString().trim() + "----" + binding.edtPwd.getText().toString().trim());
 
 
-            if (TextUtils.isEmpty(vendor_email) || TextUtils.isEmpty(vendor_pwd))
-            {
+            if (TextUtils.isEmpty(vendor_email) || TextUtils.isEmpty(vendor_pwd)) {
                 if (TextUtils.isEmpty(vendor_email)) {
                     binding.edtEmail.setError("Email Required!!");
                 }
@@ -77,23 +77,29 @@ public class LoginActivity extends AppCompatActivity {
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
 
+
         Call<ServerResponse> call = service.login(vendor_email, vendor_pwd);
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 Config.showToast(context, response.body().getMessage());
-                Intent intent = new Intent(LoginActivity.this, VendorDashboardActivity.class);
+                Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
                 startActivity(intent);
             }
+
 
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
 
                 Log.d(TAG, "onFailure: " + t.getMessage());
-            }
-        });
+                Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+                startActivity(intent);
 
+            }
+
+        });
     }
+
 
     private void clickListener() {
 
@@ -104,6 +110,27 @@ public class LoginActivity extends AppCompatActivity {
     private void openActivity(Class aclass) {
         Intent intent = new Intent(context, aclass);
         startActivity(intent);
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+//        sharedPref();
+
+    }
+
+    private void sharedPref() {
+        SharedPrefManager sharedPrefManager = new SharedPrefManager(context);
+        Config.user_id = sharedPrefManager.getInt("id");
+
+        if (Config.user_id != -1) {
+
+            openActivity(DashboardActivity.class);
+            finish();
+        }
+
     }
 
 }
