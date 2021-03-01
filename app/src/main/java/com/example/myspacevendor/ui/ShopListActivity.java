@@ -1,6 +1,7 @@
 package com.example.myspacevendor.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,6 +13,7 @@ import com.example.myspacevendor.Network.AppConfig;
 import com.example.myspacevendor.adapters.ShopAdapter;
 import com.example.myspacevendor.data.Shop;
 import com.example.myspacevendor.databinding.ActivityShopListBinding;
+
 import com.example.myspacevendor.model.ServerResponse;
 import com.example.myspacevendor.utils.Config;
 import com.example.myspacevendor.utils.SharedPrefManager;
@@ -23,6 +25,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+
+import static com.example.myspacevendor.ui.LoginActivity.vendor_email;
+import static com.example.myspacevendor.ui.LoginActivity.vendor_pwd;
 
 
 public class ShopListActivity extends AppCompatActivity implements ShopAdapter.RestaurantInterface {
@@ -46,7 +51,9 @@ public class ShopListActivity extends AppCompatActivity implements ShopAdapter.R
         setContentView(binding.getRoot());
 
         init();
-        fetchShops();
+        fetchShops(vendor_email, vendor_pwd);
+//        clickListener();
+
 
     }
 
@@ -62,15 +69,30 @@ public class ShopListActivity extends AppCompatActivity implements ShopAdapter.R
 
     }
 
+//    private void clickListener() {
+//
+//        binding..setOnClickListener(v -> openActivity(ShopListActivity.class));
+//
+//
+//
+//
+//    }
+//
+//
+//    private void openActivity(Class aclass) {
+//        Intent intent = new Intent(context, aclass);
+//        startActivity(intent);
+//    }
+
     /*----------------------------- Get Shop Data From Server ----------------------------*/
 
 
-    private void fetchShops() {
+    private void fetchShops(String vendor_email, String vendor_pwd) {
 
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
 
-        Call<ServerResponse> call = service.getAllShop("1");
+        Call<ServerResponse> call = service.getAllShop(vendor_email, vendor_pwd);
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
@@ -93,7 +115,17 @@ public class ShopListActivity extends AppCompatActivity implements ShopAdapter.R
 
     @Override
     public void onClick(Shop shop) {
-        Config.showToast(context, shop.getShopName());
+
+
+        Intent intent = new Intent(context,ViewShopActivity.class);
+        intent.putExtra("shop_id",shop.getShopId());
+        startActivity(intent);
     }
+
 }
+
+
+
+
+
 

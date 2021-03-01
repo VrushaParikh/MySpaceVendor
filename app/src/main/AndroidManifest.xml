@@ -33,6 +33,7 @@
         <activity android:name=".ui.ShopListActivity">
 
         </activity>
+        <activity android:name=".ui.PaymentActivity"/>
                 <activity
             android:name=".ui.TermsPoliciesActivity"
             android:windowSoftInputMode="adjustResize">
@@ -44,6 +45,7 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+        <activity android:name=".ui.ViewShopActivity" />
     </application>
 
 </manifest>

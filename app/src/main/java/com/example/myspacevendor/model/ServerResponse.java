@@ -21,6 +21,11 @@ public class ServerResponse {
     @Expose
     private List<Shop> shopList;
 
+
+    @SerializedName("shop")
+    @Expose
+    private Shop shop;
+
     public Boolean getError() {
         return error;
     }
@@ -43,5 +48,13 @@ public class ServerResponse {
 
     public void setShopList(List<Shop> shopList) {
         this.shopList = shopList;
+    }
+
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
     }
 }

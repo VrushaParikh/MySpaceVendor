@@ -9,27 +9,9 @@
     <string name="action_settings">Settings</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
-
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Edit Profile</string>
     <string name="menu_slideshow">Settings</string>
-
-    <string-array name="user">
-        <item>Customer</item>
-        <item>Vendor</item>
-
-    </string-array>
-
-    <string-array name="category">
-        <item>Choose shop category</item>
-        <item>Apparels</item>
-        <item>Cosmetics</item>
-        <item>Jewellery</item>
-        <item>Gifts</item>
-        <item>Grocery</item>
-        <item>Electronic Appliances</item>
-
-    </string-array>
 
     <string-array name="start">
         <item>1</item>
@@ -44,7 +26,6 @@
         <item>10</item>
         <item>11</item>
         <item>12</item>
-
     </string-array>
 
     <string-array name="end">
@@ -60,7 +41,6 @@
         <item>10</item>
         <item>11</item>
         <item>12</item>
-
     </string-array>
 
     <string-array name="start_min">
@@ -68,7 +48,6 @@
         <item>15</item>
         <item>30</item>
         <item>45</item>
-
     </string-array>
 
     <string-array name="end_min">
@@ -76,30 +55,31 @@
         <item>15</item>
         <item>30</item>
         <item>45</item>
-
     </string-array>
 
     <string-array name="start_ampm">
         <item>AM</item>
         <item>PM</item>
-
     </string-array>
 
     <string-array name="end_ampm">
         <item>AM</item>
         <item>PM</item>
-
     </string-array>
 
     <string name="a1">Already have an account?</string>
 
     <string-array name="duration">
-        <item>00</item>
         <item>15</item>
         <item>30</item>
         <item>45</item>
-
+        <item>60</item>
+        <item>90</item>
+        <item>120</item>
+        <item>240</item>
+        <item>360</item>
     </string-array>
+
     <string-array name="no">
         <item>1</item>
         <item>2</item>
@@ -113,6 +93,24 @@
         <item>10</item>
         <item>11</item>
         <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
     </string-array>
 
 

@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,7 +26,8 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     private final Context context = this;
 
-    private String vendor_email, vendor_pwd;
+    public static String vendor_email, vendor_pwd;
+    public static String id;
 
     private static final String TAG = "LoginActivity";
 
@@ -81,8 +82,18 @@ public class LoginActivity extends AppCompatActivity {
         Call<ServerResponse> call = service.login(vendor_email, vendor_pwd);
         call.enqueue(new Callback<ServerResponse>() {
             @Override
-            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
-                Config.showToast(context, response.body().getMessage());
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response)
+            {
+
+                String msg= response.body().getMessage();
+                String[] words=msg.split(":");
+                String actual=words[0];
+                Log.d(TAG, "Message: " + actual);
+                Config.showToast(context,actual);
+                id=words[1];
+                Log.d(TAG, "ID: " +id);
+
+
                 Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
                 startActivity(intent);
             }

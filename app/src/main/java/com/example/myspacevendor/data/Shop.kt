@@ -4,6 +4,9 @@ package com.example.myspacevendor.data
 import com.google.gson.annotations.SerializedName
 
 data class Shop(
+        @SerializedName("shop_id")
+        val shopId: Int,
+
         @SerializedName("shop_acc_no")
         val shopAccNo: String,
 

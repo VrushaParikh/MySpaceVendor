@@ -17,64 +17,87 @@ public interface Api {
     @FormUrlEncoded
     @POST(my_url + "login")
     Call<ServerResponse> login(
-            @Field("vendor_email") String vendor_email,
-            @Field("vendor_pwd") String vendor_pwd);
+                    @Field("vendor_email") String vendor_email,
+                    @Field("vendor_pwd") String vendor_pwd);
 
 
     @FormUrlEncoded
     @POST(my_url + "register")
     Call<ServerResponse> Register(
-            @Field("vendor_name") String vendor_name,
-            @Field("vendor_email") String vendor_email,
-            @Field("vendor_pwd") String vendor_pwd,
-            @Field("vendor_mobile") String vendor_mobile,
-            @Field("vendor_aadhar") String vendor_aadhar);
+                    @Field("vendor_name") String vendor_name,
+                    @Field("vendor_email") String vendor_email,
+                    @Field("vendor_pwd") String vendor_pwd,
+                    @Field("vendor_mobile") String vendor_mobile,
+                    @Field("vendor_aadhar") String vendor_aadhar);
 
     @FormUrlEncoded
     @POST(my_url + "shopregister")
     Call<ServerResponse> ShopRegister(
-            @Field("shop_name") String shop_name,
-            @Field("shop_add") String shop_add,
-            @Field("shop_pincode") String shop_pincode,
-            @Field("shop_email") String shop_email,
-            @Field("shop_gst") String shop_gst,
-            @Field("shop_pan") String shop_pan,
-            @Field("shop_bank_name") String shop_bank_name,
-            @Field("shop_ifsc") String shop_ifsc,
-            @Field("shop_acc_no") String shop_acc_no,
-            @Field("shop_sqft") String shop_sqft,
-            @Field("shop_lic_no") String shop_lic_no,
-            @Field("shop_timing") String shop_timing);
+                    @Field("vendor_id") String id,
+                    @Field("shop_name") String shop_name,
+                    @Field("shop_add") String shop_add,
+                    @Field("shop_pincode") String shop_pincode,
+                    @Field("shop_email") String shop_email,
+                    @Field("shop_gst") String shop_gst,
+                    @Field("shop_pan") String shop_pan,
+                    @Field("shop_bank_name") String shop_bank_name,
+                    @Field("shop_ifsc") String shop_ifsc,
+                    @Field("shop_acc_no") String shop_acc_no,
+                    @Field("shop_sqft") String shop_sqft,
+                    @Field("shop_lic_no") String shop_lic_no,
+                    @Field("shop_timing") String shop_timing);
 
 
     @FormUrlEncoded
     @POST(my_url + "offersdeals")
     Call<ServerResponse> OffersDeals(
-            @Field("offer_name") String offer_name,
-            @Field("offer_desc") String offer_desc,
-            @Field("offer_start") String offer_start,
-            @Field("offer_end") String offer_end,
-            @Field("offer_banner") String image);
+                    @Field("offer_name") String offer_name,
+                    @Field("offer_desc") String offer_desc,
+                    @Field("offer_start") String offer_start,
+                    @Field("offer_end") String offer_end,
+                    @Field("offer_banner") String image);
 
 
     @FormUrlEncoded
     @POST(my_url + "termspolicies")
     Call<ServerResponse> TermsPolicies(
-            @Field("tpname") String tp,
-            @Field("tpdesc") String desc);
+                    @Field("tpname") String tp,
+                    @Field("tpdesc") String desc);
 
     @FormUrlEncoded
     @POST(my_url + "manageslot")
     Call<ServerResponse> ManageSlot(
-            @Field("mduration") String tp,
-            @Field("mnumber") String desc);
+                    @Field("vendor_id") int vendor_id,
+                    @Field("shop_id") int shop_id,
+                    @Field("s_duration") int sduration,
+                    @Field("s_total") int stotal);
 
     @FormUrlEncoded
     @POST(my_url + "all_shop")
     Call<ServerResponse> getAllShop(
-            @Field("vendor_id") String vd_id);
+                    @Field("vendor_email") String vendor_email,
+                    @Field("vendor_pwd") String vendor_pwd);
+
+
+    @FormUrlEncoded
+    @POST(my_url + "shop_profile")
+    Call<ServerResponse> ShopProfile(
+                    @Field("vendor_email") String vendor_email,
+                    @Field("vendor_pwd") String vendor_pwd);
 
 
 
 
+    @FormUrlEncoded
+    @POST(my_url + "get_vendor_name")
+    Call<ServerResponse> getVdName(
+            @Field("vendor_email") String vendor_email,
+            @Field("vendor_pwd") String vendor_pwd);
+
+
+    @FormUrlEncoded
+    @POST(my_url + "shop_details")
+    Call<ServerResponse> getShopDetails(
+            @Field("shop_id") String shopId
+    );
 }

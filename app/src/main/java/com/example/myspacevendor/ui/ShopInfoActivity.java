@@ -20,6 +20,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import static com.example.myspacevendor.ui.LoginActivity.id;
+
 public class ShopInfoActivity extends AppCompatActivity {
     private ActivityShopInfoBinding binding;
     private Context context = this;
@@ -123,7 +125,7 @@ public class ShopInfoActivity extends AppCompatActivity {
 
             }
 
-            doShopRegister(shop_name, shop_add, shop_pincode, shop_email, shop_gst, shop_pan, shop_bank_name, shop_ifsc,
+            doShopRegister(id,shop_name, shop_add, shop_pincode, shop_email, shop_gst, shop_pan, shop_bank_name, shop_ifsc,
                     shop_acc_no, shop_sqft, shop_lic_no, shop_timing);
 
         });
@@ -132,7 +134,7 @@ public class ShopInfoActivity extends AppCompatActivity {
     }
 
 
-    private void doShopRegister(String shop_name, String shop_add, String shop_pincode, String shop_email,
+    private void doShopRegister(String id, String shop_name, String shop_add, String shop_pincode, String shop_email,
                                 String shop_gst, String shop_pan, String shop_bank_name, String shop_ifsc,
                                 String shop_acc_no, String shop_sqft, String shop_lic_no, String shop_timing)
     {
@@ -140,7 +142,7 @@ public class ShopInfoActivity extends AppCompatActivity {
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
 
-        Call<ServerResponse> call = service.ShopRegister(shop_name, shop_add, shop_pincode, shop_email, shop_gst, shop_pan, shop_bank_name, shop_ifsc, shop_acc_no, shop_sqft, shop_lic_no, shop_timing);
+        Call<ServerResponse> call = service.ShopRegister(id, shop_name, shop_add, shop_pincode, shop_email, shop_gst, shop_pan, shop_bank_name, shop_ifsc, shop_acc_no, shop_sqft, shop_lic_no, shop_timing);
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {

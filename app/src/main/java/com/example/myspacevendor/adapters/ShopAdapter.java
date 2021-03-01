@@ -1,6 +1,6 @@
 package com.example.myspacevendor.adapters;
 
-import android.content.Context;
+
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -11,6 +11,8 @@ import com.example.myspacevendor.data.Shop;
 import com.example.myspacevendor.databinding.LayoutShopsBinding;
 
 import java.util.List;
+
+
 
 public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ViewHolder> {
 
@@ -38,7 +40,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ViewHolder> {
 
         holder.binding.shopName.setText(shop.getShopName());
 
-        holder.itemView.setOnClickListener(view -> {
+        holder.binding.view.setOnClickListener(view -> {
             restaurantInterface.onClick(shop);
         });
 
@@ -67,3 +69,4 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ViewHolder> {
     }
 
 }
+
