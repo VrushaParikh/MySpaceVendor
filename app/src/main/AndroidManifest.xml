@@ -33,6 +33,9 @@
         <activity android:name=".ui.ShopListActivity">
 
         </activity>
+        <activity android:name=".ui.VendorListActivity">
+
+        </activity>
         <activity android:name=".ui.PaymentActivity"/>
                 <activity
             android:name=".ui.TermsPoliciesActivity"

@@ -38,6 +38,8 @@ public class AdminDashActivity extends AppCompatActivity
 
         binding.mngTnp.setOnClickListener(v -> openActivity(TermsPoliciesActivity.class));
         binding.img3.setOnClickListener(v -> openActivity(TermsPoliciesActivity.class));
+        binding.mngven.setOnClickListener(v -> openActivity(VendorListActivity.class));
+        binding.img1.setOnClickListener(v -> openActivity(VendorListActivity.class));
 
 
 

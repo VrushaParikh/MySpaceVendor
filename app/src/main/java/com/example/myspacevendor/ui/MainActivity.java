@@ -5,16 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.myspacevendor.databinding.ActivityMainBinding;
+
 
 public class MainActivity extends AppCompatActivity {
     private static int splash_timeout = 3000;
 
     private ActivityMainBinding binding;
     private Context context = this;
+
+    private static final String TAG = "MainActivity";
 
 
     @Override
@@ -32,13 +33,18 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(context, LoginActivity.class);
+                Intent i = new Intent(context, AdminDashActivity.class);
 
                 startActivity(i);
 
                 finish();
 
+
             }
         }, splash_timeout);
+
+
+
     }
+
 }

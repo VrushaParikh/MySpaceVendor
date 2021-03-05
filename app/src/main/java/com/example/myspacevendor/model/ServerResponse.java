@@ -1,6 +1,7 @@
 package com.example.myspacevendor.model;
 
 import com.example.myspacevendor.data.Shop;
+import com.example.myspacevendor.data.Vendor_Name_List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -20,6 +21,10 @@ public class ServerResponse {
     @SerializedName("shops")
     @Expose
     private List<Shop> shopList;
+
+    @SerializedName("vendors")
+    @Expose
+    private List<Vendor_Name_List> vendor_name_lists;
 
 
     @SerializedName("shop")
@@ -56,5 +61,14 @@ public class ServerResponse {
 
     public void setShop(Shop shop) {
         this.shop = shop;
+    }
+
+
+    public List<Vendor_Name_List> getVendor_name_lists() {
+        return vendor_name_lists;
+    }
+
+    public void setVendor_name_lists(List<Vendor_Name_List> vendor_name_lists) {
+        this.vendor_name_lists = vendor_name_lists;
     }
 }
