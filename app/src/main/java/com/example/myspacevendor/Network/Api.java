@@ -65,19 +65,28 @@ public interface Api {
             @Field("tpname") String tp,
             @Field("tpdesc") String desc);
 
+
     @FormUrlEncoded
     @POST(my_url + "manageslot")
     Call<ServerResponse> ManageSlot(
-            @Field("vendor_id") int vendor_id,
             @Field("shop_id") int shop_id,
             @Field("s_duration") int sduration,
             @Field("s_total") int stotal);
 
+
+    @FormUrlEncoded
+    @POST(my_url + "insert_slot")
+        Call<ServerResponse> InsertSlot(
+            @Field("shop_id") int shop_id,
+            @Field("slot_start") String start,
+            @Field("slot_end") String end);
+
+
     @FormUrlEncoded
     @POST(my_url + "all_shop")
     Call<ServerResponse> getAllShop(
-            @Field("vendor_email") String vendor_email,
-            @Field("vendor_pwd") String vendor_pwd);
+            @Field("vendor_id") int id
+    );
 
     @FormUrlEncoded
     @POST(my_url + "shop_profile")
@@ -85,11 +94,6 @@ public interface Api {
             @Field("vendor_email") String vendor_email,
             @Field("vendor_pwd") String vendor_pwd);
 
-    @FormUrlEncoded
-    @POST(my_url + "get_vendor_name")
-    Call<ServerResponse> getVdName(
-            @Field("vendor_email") String vendor_email,
-            @Field("vendor_pwd") String vendor_pwd);
 
     @FormUrlEncoded
     @POST(my_url + "shop_details")

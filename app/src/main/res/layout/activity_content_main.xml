@@ -17,22 +17,21 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="75dp"
         app:srcCompat="@drawable/logo" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/userName"-->
-<!--        android:layout_width="200dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignLeft="@id/imageView"-->
-<!--        android:layout_marginStart="110dp"-->
-<!--        android:layout_marginLeft="138dp"-->
-<!--        android:layout_marginTop="80dp"-->
-<!--        android:text="Welcome XYZ Vendor!"-->
-<!--        android:textColor="@color/colorBlack"-->
-<!--        android:textSize="18sp"-->
-<!--        android:textStyle="bold" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/userName"-->
+    <!--        android:layout_width="200dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignLeft="@id/imageView"-->
+    <!--        android:layout_marginStart="110dp"-->
+    <!--        android:layout_marginLeft="138dp"-->
+    <!--        android:layout_marginTop="80dp"-->
+    <!--        android:text="Welcome XYZ Vendor!"-->
+    <!--        android:textColor="@color/colorBlack"-->
+    <!--        android:textSize="18sp"-->
+    <!--        android:textStyle="bold" />-->
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

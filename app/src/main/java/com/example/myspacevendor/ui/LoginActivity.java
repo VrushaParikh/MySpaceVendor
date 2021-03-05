@@ -11,10 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myspacevendor.Network.Api;
 import com.example.myspacevendor.Network.AppConfig;
+import com.example.myspacevendor.data.user.User;
 import com.example.myspacevendor.databinding.ActivityLoginBinding;
 import com.example.myspacevendor.model.ServerResponse;
 import com.example.myspacevendor.utils.Config;
 import com.example.myspacevendor.utils.SharedPrefManager;
+
+import org.jetbrains.annotations.NotNull;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -82,25 +85,26 @@ public class LoginActivity extends AppCompatActivity {
         Call<ServerResponse> call = service.login(vendor_email, vendor_pwd);
         call.enqueue(new Callback<ServerResponse>() {
             @Override
-            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response)
-            {
-
-                String msg= response.body().getMessage();
-                String[] words=msg.split(":");
-                String actual=words[0];
-                Log.d(TAG, "Message: " + actual);
-                Config.showToast(context,actual);
-                id=words[1];
-                Log.d(TAG, "ID: " +id);
+            public void onResponse(@NotNull Call<ServerResponse> call, @NotNull Response<ServerResponse> response) {
 
 
-                Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
-                startActivity(intent);
+                if (response.body() != null) {
+
+                    ServerResponse response1 = response.body();
+                    Config.showToast(context, response1.getMessage());
+
+
+                    if (!response1.getError()) {
+                        sendUserData(response1.getUser());
+                    }
+                }
+
+
             }
 
 
             @Override
-            public void onFailure(Call<ServerResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<ServerResponse> call, @NotNull Throwable t) {
 
                 Log.d(TAG, "onFailure: " + t.getMessage());
                 Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
@@ -124,11 +128,23 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    /*----------------------------------------------- Save User Data -----------------------------------------------*/
+
+    private void sendUserData(User user) {
+
+        SharedPrefManager sharedPrefManager = new SharedPrefManager(context);
+        sharedPrefManager.setInt("id", Integer.parseInt(user.getVendorId()));
+        sharedPrefManager.setString("name", user.getVendorName());
+
+        sharedPref();
+    }
+
+
     @Override
     protected void onStart() {
         super.onStart();
 
-//        sharedPref();
+        sharedPref();
 
     }
 
