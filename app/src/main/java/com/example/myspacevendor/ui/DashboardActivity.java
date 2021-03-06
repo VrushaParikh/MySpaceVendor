@@ -127,7 +127,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             openActivity(ScanTokenActivity.class);
         });
         binding.includedContent.block6.setOnClickListener(v -> {
-            openActivity(MslotActivity.class);
+            openActivity(ShopListActivity.class);
         });
         binding.includedContent.block5.setOnClickListener(v -> {
             openActivity(PaymentActivity.class);

@@ -114,4 +114,7 @@
     </string-array>
 
 
+    <string name="booking_success">Scanned Successfully</string>
+    <string name="booking_failed">Scanned Failed</string>
+
 </resources>

@@ -2,6 +2,7 @@ package com.example.myspacevendor.model
 
 import com.example.myspacevendor.data.Shop
 import com.example.myspacevendor.data.Vendor_Name_List
+import com.example.myspacevendor.data.slot.SlotData
 import com.example.myspacevendor.data.user.User
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -31,4 +32,9 @@ class ServerResponse {
     @SerializedName("user")
     @Expose
     var user: User? = null
+
+
+    @SerializedName("slots")
+    @Expose
+    var slotList: List<SlotData>? = null
 }

@@ -339,7 +339,6 @@
 
                         <LinearLayout
                             android:id="@+id/block6"
-
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"

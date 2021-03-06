@@ -76,7 +76,7 @@ public interface Api {
 
     @FormUrlEncoded
     @POST(my_url + "insert_slot")
-        Call<ServerResponse> InsertSlot(
+    Call<ServerResponse> InsertSlot(
             @Field("shop_id") int shop_id,
             @Field("slot_start") String start,
             @Field("slot_end") String end);
@@ -103,5 +103,25 @@ public interface Api {
 
     @GET(my_url + "vendor_list")
     Call<ServerResponse> vendorList();
+
+    @FormUrlEncoded
+    @POST(my_url + "get_booking_history")
+    Call<ServerResponse> getBookingData(
+            @Field("shop_id") String shopId
+    );
+
+
+    @FormUrlEncoded
+    @POST(my_url + "get_slot_data")
+    Call<ServerResponse> getSlotData(
+            @Field("shop_id") String shopId
+    );
+
+
+    @FormUrlEncoded
+    @POST(my_url + "scan_token")
+    Call<ServerResponse> scanToken(
+            @Field("booking_id") String bookingId
+    );
 }
 

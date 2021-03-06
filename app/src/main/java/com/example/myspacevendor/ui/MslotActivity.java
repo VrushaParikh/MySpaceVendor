@@ -11,12 +11,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myspacevendor.Network.Api;
 import com.example.myspacevendor.Network.AppConfig;
+import com.example.myspacevendor.data.slot.Slot;
 import com.example.myspacevendor.databinding.ActivityMslotBinding;
 import com.example.myspacevendor.model.ServerResponse;
 import com.example.myspacevendor.utils.Config;
 
 import java.time.Duration;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +38,9 @@ public class MslotActivity extends AppCompatActivity {
     private int shopId;
 
     private String shopStartTime = "";
+
+    private List<Slot> slotList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,31 +92,75 @@ public class MslotActivity extends AppCompatActivity {
             interval = Duration.ofMinutes(duration);
 
             LocalTime time = LocalTime.of(Integer.parseInt(String.valueOf(t2[0])), 0);
-            for (int i = 0; i < total; i++) {
+            for (int i = 0; i < (total + 1); i++) {
+                handleSlotList(String.valueOf(time));
                 time = time.plus(interval);
-
-                insertSlotToDB(String.valueOf(time));
 
             }
 
-            Config.showToast(context, "Slot Inserted");
-            finish();
+            fetchLoop();
+
         }
 
 
     }
 
 
-    private void insertSlotToDB(String time) {
+
+    /*----------------------------- Handle Slot List ------------------------------*/
+
+    private void handleSlotList(String myTime) {
+
+
+        if (!slotList.isEmpty()) {
+
+            Slot slot = slotList.get(slotList.size() - 1);
+            slot.setEndSlot(myTime);
+            slotList.set(slotList.size() - 1, slot);
+        }
+
+        Slot slot = new Slot(myTime, myTime);
+        slotList.add(slot);
+    }
+
+
+
+    /*----------------------------- Fetch Loop ------------------------------*/
+
+    private void fetchLoop() {
+
+        for (Slot slot : slotList) {
+
+            if (slotList.indexOf(slot) == 6) {
+                break;
+            }
+
+            Log.d(TAG, "fetchLoop: INDEX " + slotList.indexOf(slot));
+
+
+            insertSlotToDB(slot.getStartSlot(), slot.getEndSlot());
+
+            Log.d(TAG, "Start Time : " + slot.getStartSlot() + " ---  End Time : " + slot.getEndSlot());
+        }
+
+
+        Config.showToast(context, "Slot Inserted");
+        finish();
+
+    }
+
+    /*----------------------------- Insert Slot To DB ------------------------------*/
+
+    private void insertSlotToDB(String startSlot, String endSlot) {
 
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
 
-        Call<ServerResponse> call = service.InsertSlot(shopId, time, time);
+        Call<ServerResponse> call = service.InsertSlot(shopId, startSlot, endSlot);
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
-                Config.showToast(context, response.body().getMessage());
+//                Config.showToast(context, response.body().getMessage());
             }
 
             @Override
