@@ -40,9 +40,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private static String name;
 
     private static final String TAG = "DashboardActivity";
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = ActivityDashboardBinding.inflate(getLayoutInflater());
@@ -51,24 +51,25 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         init();
         clickListener();
-   }
+    }
 
 
-    private void init()
-    {
-        getName(vendor_email, vendor_pwd);
+    private void init() {
 
 
-        toggle = new ActionBarDrawerToggle(activity, binding.drawerLayout, R.string.open, R.string.close);
+        setSupportActionBar(binding.includedContent.includedToolbar.toolbar);
+
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_toggle);
+
+        toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.includedContent.includedToolbar.toolbar, R.string.open, R.string.close);
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        setSupportActionBar(binding.includedContent.includedToolbar.toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         binding.nav.setNavigationItemSelectedListener(this);
-
 
 
     }
@@ -76,8 +77,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
+    public boolean onOptionsItemSelected(MenuItem item) {
 
         if (toggle.onOptionsItemSelected(item))
             return true;
@@ -90,11 +90,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item)
-    {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case R.id.nav_home:
                 Config.showToast(activity, "Home");
                 return true;
@@ -113,29 +111,38 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     }
 
 
-    private void clickListener()
-    {
+    private void clickListener() {
 
 //        binding.block1.setOnClickListener(v -> openActivity(ShopInfoActivity.class));
 
-        binding.includedContent.block1.setOnClickListener(v -> {ShopProfile(vendor_email,vendor_pwd);});
-        binding.includedContent.block2.setOnClickListener(v -> {openActivity(OffersDealsActivity.class);});
-        binding.includedContent.block4.setOnClickListener(v -> {openActivity(ScanTokenActivity.class);});
-        binding.includedContent.block6.setOnClickListener(v -> {openActivity(MslotActivity.class);});
-        binding.includedContent.block5.setOnClickListener(v -> {openActivity(PaymentActivity.class);});
+        binding.includedContent.block1.setOnClickListener(v -> {
+
+            openActivity(ShopListActivity.class);
+
+        });
+        binding.includedContent.block2.setOnClickListener(v -> {
+            openActivity(OffersDealsActivity.class);
+        });
+        binding.includedContent.block4.setOnClickListener(v -> {
+            openActivity(ScanTokenActivity.class);
+        });
+        binding.includedContent.block6.setOnClickListener(v -> {
+            openActivity(ShopListActivity.class);
+        });
+        binding.includedContent.block5.setOnClickListener(v -> {
+            openActivity(PaymentActivity.class);
+        });
 
 
     }
 
-    private void openActivity(Class aclass)
-    {
+    private void openActivity(Class aclass) {
         Intent intent = new Intent(context, aclass);
         startActivity(intent);
     }
 
 
-    private void ShopProfile(String vendor_email, String vendor_pwd)
-    {
+    private void ShopProfile(String vendor_email, String vendor_pwd) {
 
         Retrofit retrofit;
         retrofit = AppConfig.getRetrofit();
@@ -147,13 +154,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 Log.d(TAG, "onSuccess: " + response.body().getMessage());
                 int c = parseInt(response.body().getMessage());
-                if(c>0)
-                {
+                if (c > 0) {
                     Intent intent = new Intent(DashboardActivity.this, ShopListActivity.class);
                     startActivity(intent);
-                }
-                else
-                {
+                } else {
                     Intent intent = new Intent(DashboardActivity.this, ShopInfoActivity.class);
                     startActivity(intent);
                 }
@@ -164,67 +168,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 Log.d(TAG, "onFailure: " + t.getMessage());
             }
         });
-
-    }
-
-    //get name
-
-    private void getName(String vendor_email, String vendor_pwd)
-    {
-
-        Retrofit retrofit = AppConfig.getRetrofit();
-        Api service = retrofit.create(Api.class);
-
-        Call<ServerResponse> call = service.getVdName(vendor_email, vendor_pwd);
-        call.enqueue(new Callback<ServerResponse>() {
-            @Override
-            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
-                name = response.body().getMessage();
-
-                Log.d(TAG, "name fetched: " + name);
-                Name(name);
-            }
-
-            @Override
-            public void onFailure(Call<ServerResponse> call, Throwable t) {
-
-                Log.d(TAG, "onFailure: " + t.getMessage());
-            }
-        });
-
-
-
-    }
-
-    private void Name(String na)
-    {
-        Log.d(TAG, "hello " + na);
-
-        RelativeLayout rl= binding.includedContent.includedContent;
-
-
-        final TextView textView;
-        textView = new TextView(this);
-
-        textView.setText("Welcome "+na);
-        textView.setTextSize(18f);
-        textView.setPadding(400, 300, 10, 8);
-        // textView.setTextColor(rnd.nextInt() | 0xff000000);
-
-        textView.setTextColor(Color.BLACK);
-        textView.setTypeface(Typeface.DEFAULT_BOLD);
-
-        int curTextViewId = 777;
-        textView.setId(curTextViewId);
-        final RelativeLayout.LayoutParams params =
-                new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
-                        RelativeLayout.LayoutParams.WRAP_CONTENT);
-
-
-        textView.setLayoutParams(params);
-
-
-        rl.addView(textView, params);
 
     }
 

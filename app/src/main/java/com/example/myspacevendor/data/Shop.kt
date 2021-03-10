@@ -40,6 +40,12 @@ data class Shop(
         @SerializedName("shop_sqft")
         val shopSqft: String,
 
+        @SerializedName("shop_open_time")
+        val shopOpenTime: String,
+
+        @SerializedName("shop_close_time")
+        val shopCloseTime: String,
+
         @SerializedName("shop_timing")
-        val shopTiming: String
+        val shopTiming: String,
 )

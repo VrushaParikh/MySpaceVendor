@@ -47,11 +47,15 @@ public class ViewShopActivity extends AppCompatActivity {
         clickListener();
 
 
-
     }
+
     private void clickListener() {
 
-        binding.back.setOnClickListener(v -> openActivity(ShopListActivity.class));
+        binding.back.setOnClickListener(v -> {
+            Intent intent = new Intent(context, MslotActivity.class);
+            intent.putExtra("shop_id", shopId);
+            startActivity(intent);
+        });
     }
 
 

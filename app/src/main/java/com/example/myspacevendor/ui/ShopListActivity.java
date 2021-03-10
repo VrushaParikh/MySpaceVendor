@@ -51,7 +51,7 @@ public class ShopListActivity extends AppCompatActivity implements ShopAdapter.R
         setContentView(binding.getRoot());
 
         init();
-        fetchShops(vendor_email, vendor_pwd);
+        fetchShops();
 //        clickListener();
 
 
@@ -87,12 +87,12 @@ public class ShopListActivity extends AppCompatActivity implements ShopAdapter.R
     /*----------------------------- Get Shop Data From Server ----------------------------*/
 
 
-    private void fetchShops(String vendor_email, String vendor_pwd) {
+    private void fetchShops() {
 
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
 
-        Call<ServerResponse> call = service.getAllShop(vendor_email, vendor_pwd);
+        Call<ServerResponse> call = service.getAllShop(Config.user_id);
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
