@@ -65,7 +65,7 @@ public class TermsPoliciesActivity extends AppCompatActivity {
 
 //        parentLayout = binding.relative;
 
-
+        handleToolbar();
         init();
         clickListeners();
 
@@ -116,6 +116,14 @@ public class TermsPoliciesActivity extends AppCompatActivity {
             readDynamicIds();
 
         });
+    }
+
+    /*--------------------------------- Handle Toolbar --------------------------------*/
+
+    private void handleToolbar() {
+
+        binding.includedToolbar.title.setText("Terms and Policies");
+        binding.includedToolbar.backBtn.setOnClickListener(v -> finish());
     }
 
 

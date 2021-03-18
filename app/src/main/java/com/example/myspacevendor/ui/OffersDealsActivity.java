@@ -53,7 +53,7 @@ public class OffersDealsActivity extends AppCompatActivity {
         binding = ActivityOffersDealsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
+        handleToolbar();
         init();
         clickListener();
 
@@ -101,6 +101,15 @@ public class OffersDealsActivity extends AppCompatActivity {
 
 
     }
+
+    /*--------------------------------- Handle Toolbar --------------------------------*/
+
+    private void handleToolbar() {
+
+        binding.includedToolbar.title.setText("Offers and Deals");
+        binding.includedToolbar.backBtn.setOnClickListener(v -> finish());
+    }
+
 
     private void doOffersDealsRegister(String offname, String offdesc, String offsdate, String offedate, Bitmap bitmap) {
         Retrofit retrofit = AppConfig.getRetrofit();

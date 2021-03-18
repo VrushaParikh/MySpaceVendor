@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myspacevendor.Network.Api;
 import com.example.myspacevendor.Network.AppConfig;
 import com.example.myspacevendor.data.Shop;
+
 import com.example.myspacevendor.databinding.ActivityViewShopBinding;
 import com.example.myspacevendor.model.ServerResponse;
 import com.example.myspacevendor.utils.Config;
@@ -34,6 +35,7 @@ public class ViewShopActivity extends AppCompatActivity {
 
         binding = ActivityViewShopBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        handleToolbar();
         init();
     }
 
@@ -47,6 +49,14 @@ public class ViewShopActivity extends AppCompatActivity {
         clickListener();
 
 
+    }
+
+    /*--------------------------------- Handle Toolbar --------------------------------*/
+
+    private void handleToolbar() {
+
+        binding.includedToolbar.title.setText("Shop Information");
+        binding.includedToolbar.backBtn.setOnClickListener(v -> finish());
     }
 
     private void clickListener() {

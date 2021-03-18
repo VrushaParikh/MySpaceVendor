@@ -7,6 +7,10 @@
     android:background="#E8EFE3"
     tools:context=".ui.ScanTokenActivity">
 
+    <include
+        android:id="@+id/included_toolbar"
+        layout="@layout/custom_toolbar" />
+
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -14,7 +18,9 @@
         android:layout_margin="15dp"
         android:padding="8dp"
         app:cardCornerRadius="15dp"
-        app:cardElevation="15dp">
+        app:cardElevation="15dp"
+        android:layout_below="@id/included_toolbar">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

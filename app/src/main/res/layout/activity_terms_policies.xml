@@ -11,6 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include
+            android:id="@+id/included_toolbar"
+            layout="@layout/custom_toolbar" />
+
 
         <TextView
             android:id="@+id/tnp"
@@ -25,7 +29,8 @@
             android:text="Terms and Policies"
             android:textColor="#00008B"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_below="@id/included_toolbar"/>
 
 
         <com.google.android.material.card.MaterialCardView

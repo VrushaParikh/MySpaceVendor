@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myspacevendor.Network.Api;
 import com.example.myspacevendor.Network.AppConfig;
 import com.example.myspacevendor.R;
+import com.example.myspacevendor.databinding.ActivityMslotBinding;
+import com.example.myspacevendor.databinding.ActivityScanTokenBinding;
 import com.example.myspacevendor.databinding.LayoutSuccessDialogBinding;
 import com.example.myspacevendor.model.ServerResponse;
 import com.example.myspacevendor.utils.Config;
@@ -32,24 +34,32 @@ import retrofit2.Retrofit;
 public class ScanTokenActivity extends AppCompatActivity {
     Button scan_btn;
     public static TextView scan_text;
-
+    private ActivityScanTokenBinding binding;
     private Context context = this;
+
 
     private static final String TAG = "ScanTokenActivity";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scan_token);
 
-        scan_text = (TextView) findViewById(R.id.result);
-        scan_btn = (Button) findViewById((R.id.scan));
+        binding = ActivityScanTokenBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        handleToolbar();
+        init();
+    }
+    private void init()
+    {
+        scan_text=binding.result;
+        scan_btn=binding.scan;
 
         scan_btn.setOnClickListener(view -> {
 
             Intent intent = new Intent(context, SacnnerView.class);
             startActivityForResult(intent, 1001);
         });
+
     }
 
 
@@ -75,6 +85,15 @@ public class ScanTokenActivity extends AppCompatActivity {
         }
 
     }
+
+    /*--------------------------------- Handle Toolbar --------------------------------*/
+
+    private void handleToolbar() {
+
+        binding.includedToolbar.title.setText("Scan Token");
+        binding.includedToolbar.backBtn.setOnClickListener(v -> finish());
+    }
+
 
 
 

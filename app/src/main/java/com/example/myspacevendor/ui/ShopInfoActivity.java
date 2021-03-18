@@ -39,8 +39,9 @@ public class ShopInfoActivity extends AppCompatActivity {
 
         binding = ActivityShopInfoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        handleToolbar();
         init();
+
 
     }
 
@@ -132,6 +133,18 @@ public class ShopInfoActivity extends AppCompatActivity {
 
 
     }
+
+
+
+    /*--------------------------------- Handle Toolbar --------------------------------*/
+
+    private void handleToolbar() {
+
+        binding.includedToolbar.title.setText("Add Shop Information");
+        binding.includedToolbar.backBtn.setOnClickListener(v -> finish());
+    }
+
+
 
 
     private void doShopRegister(String id, String shop_name, String shop_add, String shop_pincode, String shop_email,

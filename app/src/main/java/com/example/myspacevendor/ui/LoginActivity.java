@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myspacevendor.Network.Api;
@@ -90,16 +89,16 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (response.body() != null) {
 
-                    ServerResponse response1 = response.body();
-                    Config.showToast(context, response1.getMessage());
-
-
-                    if (!response1.getError()) {
-                        sendUserData(response1.getUser());
-                    }
                 }
 
 
+                ServerResponse response1 = response.body();
+                Config.showToast(context, response1.getMessage());
+
+
+                if (!response1.getError()) {
+                    sendUserData(response1.getUser());
+                }
             }
 
 

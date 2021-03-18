@@ -8,11 +8,16 @@
     android:background="#C7CAC6"
     tools:context=".ui.OffersDealsActivity">
 
+    <include
+        android:id="@+id/included_toolbar"
+        layout="@layout/custom_toolbar" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF"
-        android:fillViewport="false">
+        android:fillViewport="false"
+        android:layout_below="@id/included_toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"

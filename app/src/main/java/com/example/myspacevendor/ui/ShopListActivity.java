@@ -49,7 +49,7 @@ public class ShopListActivity extends AppCompatActivity implements ShopAdapter.R
 
         binding = ActivityShopListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        handleToolbar();
         init();
         fetchShops();
 //        clickListener();
@@ -66,6 +66,8 @@ public class ShopListActivity extends AppCompatActivity implements ShopAdapter.R
         shopAdapter = new ShopAdapter(shopArrayList, this);
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setAdapter(shopAdapter);
+        binding.addShop.setOnClickListener(view -> openActivity(ShopInfoActivity.class));
+
 
     }
 
@@ -73,16 +75,23 @@ public class ShopListActivity extends AppCompatActivity implements ShopAdapter.R
 //
 //        binding..setOnClickListener(v -> openActivity(ShopListActivity.class));
 //
-//
-//
-//
 //    }
 //
-//
-//    private void openActivity(Class aclass) {
-//        Intent intent = new Intent(context, aclass);
-//        startActivity(intent);
-//    }
+
+    private void openActivity(Class aclass) {
+        Intent intent = new Intent(context, aclass);
+        startActivity(intent);
+    }
+
+
+    /*--------------------------------- Handle Toolbar --------------------------------*/
+
+    private void handleToolbar() {
+
+        binding.includedToolbar.title.setText("Shop List");
+        binding.includedToolbar.backBtn.setOnClickListener(v -> finish());
+    }
+
 
     /*----------------------------- Get Shop Data From Server ----------------------------*/
 

@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".ui.ShopInfoActivity">
 
+
+    <include
+        android:id="@+id/included_toolbar"
+        layout="@layout/custom_toolbar" />
+
     <TextView
         android:id="@+id/shop_form"
         android:layout_width="match_parent"
@@ -16,7 +21,8 @@
         android:text="Shop Registration"
         android:textColor="#000000"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_below="@id/included_toolbar"/>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

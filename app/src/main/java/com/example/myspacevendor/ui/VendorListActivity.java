@@ -44,7 +44,7 @@ public class VendorListActivity extends AppCompatActivity implements VendorNameL
 
         binding = ActivityVendorListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        handleToolbar();
         init();
         fetchVendors();
 //        clickListener();
@@ -77,6 +77,15 @@ public class VendorListActivity extends AppCompatActivity implements VendorNameL
 //        Intent intent = new Intent(context, aclass);
 //        startActivity(intent);
 //    }
+
+
+    /*--------------------------------- Handle Toolbar --------------------------------*/
+
+    private void handleToolbar() {
+
+        binding.includedToolbar.title.setText("Manage Timeslot");
+        binding.includedToolbar.backBtn.setOnClickListener(v -> finish());
+    }
 
     /*----------------------------- Get Shop Data From Server ----------------------------*/
 

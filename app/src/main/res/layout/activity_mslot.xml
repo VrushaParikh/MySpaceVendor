@@ -14,7 +14,7 @@
 
         <include
             android:id="@+id/included_toolbar"
-            layout="@layout/toolbar" />
+            layout="@layout/custom_toolbar" />
 
 
         <androidx.cardview.widget.CardView

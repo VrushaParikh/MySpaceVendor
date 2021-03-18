@@ -8,6 +8,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,9 +19,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myspacevendor.Network.Api;
 import com.example.myspacevendor.Network.AppConfig;
 import com.example.myspacevendor.R;
+
 import com.example.myspacevendor.databinding.ActivityDashboardBinding;
 import com.example.myspacevendor.model.ServerResponse;
 import com.example.myspacevendor.utils.Config;
+import com.example.myspacevendor.utils.SharedPrefManager;
 import com.google.android.material.navigation.NavigationView;
 
 import retrofit2.Call;
@@ -37,6 +40,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private ActivityDashboardBinding binding;
     private final Context context = this;
     private final Activity activity = this;
+    private SharedPrefManager sharedPrefManager;
     private static String name;
 
     private static final String TAG = "DashboardActivity";
@@ -48,23 +52,27 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         binding = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        sharedPrefManager = new SharedPrefManager(context);
+
 
         init();
         clickListener();
+        manageHeaderView();
+        manageNameView();
     }
 
 
     private void init() {
 
 
-        setSupportActionBar(binding.includedContent.includedToolbar.toolbar);
+        setSupportActionBar(binding.includedContent.includedToolbar.customToolbar);
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_toggle);
 
-        toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.includedContent.includedToolbar.toolbar, R.string.open, R.string.close);
+        toggle = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.includedContent.includedToolbar.customToolbar, R.string.open, R.string.close);
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -101,8 +109,9 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 Config.showToast(activity, "Edit Profile");
                 return true;
 
-            case R.id.nav_slideshow:
-                Config.showToast(activity, "Settings");
+            case R.id.nav_logout:
+                sharedPrefManager.clear();
+                openActivity(LoginActivity.class);
                 return true;
 
             default:
@@ -136,11 +145,31 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
     }
 
-    private void openActivity(Class aclass) {
-        Intent intent = new Intent(context, aclass);
-        startActivity(intent);
+
+
+
+    /*--------------------------------- Manage header View -----------------------------------------*/
+
+
+    private void manageHeaderView() {
+
+        View header = binding.nav.getHeaderView(0);
+        TextView tv = header.findViewById(R.id.header_user_name);
+        tv.setText(sharedPrefManager.getString("name"));
+
     }
 
+    /*--------------------------------- Manage Dashboard Name  View -----------------------------------------*/
+
+
+    private void manageNameView() {
+
+        View header = binding.includedContent.getRoot();
+        TextView tv = header.findViewById(R.id.user_name);
+        tv.setText(sharedPrefManager.getString("name"));
+
+    }
+    /*--------------------------------- Shop Profile -----------------------------------------*/
 
     private void ShopProfile(String vendor_email, String vendor_pwd) {
 
@@ -169,6 +198,11 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             }
         });
 
+    }
+
+    private void openActivity(Class aclass) {
+        Intent intent = new Intent(context, aclass);
+        startActivity(intent);
     }
 
 

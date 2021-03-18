@@ -27,7 +27,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
 
         binding = ActivityPaymentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        handleToolbar();
         init();
         clickListener();
 
@@ -40,12 +40,22 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
 
 
 
+
     private void clickListener() {
         binding.btPay.setOnClickListener(view -> {
             String sAmount = "5000";
             int amount = Math.round(Float.parseFloat(sAmount) * 100);
             doActivity(amount);
         });
+    }
+
+
+    /*--------------------------------- Handle Toolbar --------------------------------*/
+
+    private void handleToolbar() {
+
+        binding.includedToolbar.title.setText("Make Payment");
+        binding.includedToolbar.backBtn.setOnClickListener(v -> finish());
     }
 
     private void doActivity(int amount) {

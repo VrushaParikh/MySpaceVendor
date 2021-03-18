@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -52,7 +52,7 @@ public class MslotActivity extends AppCompatActivity {
         Intent intent = getIntent();
         shopId = intent.getIntExtra("shop_id", 0);
 
-
+    handleToolbar();
         init();
         getShopDetails(shopId);
 
@@ -73,6 +73,14 @@ public class MslotActivity extends AppCompatActivity {
 
         });
 
+    }
+
+    /*--------------------------------- Handle Toolbar --------------------------------*/
+
+    private void handleToolbar() {
+
+        binding.includedToolbar.title.setText("Manage Timeslot");
+        binding.includedToolbar.backBtn.setOnClickListener(v -> finish());
     }
 
 
