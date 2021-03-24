@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circle">
+    </ImageView>
+
+    <TextView
+        android:text="V"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/colorWhite"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+
+    </TextView>
+</RelativeLayout>
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="fill_parent"-->
+<!--    android:layout_height="fill_parent" >-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/flag"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="250dp"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:scaleType="fitXY"-->
+<!--        android:src="@drawable/circle" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textview"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:textColor="@color/colorWhite"-->
+<!--        android:text="VVVVV"-->
+<!--        sty-->
+<!--        android:layout_centerHorizontal="true" />-->
+
+<!--</RelativeLayout>-->
