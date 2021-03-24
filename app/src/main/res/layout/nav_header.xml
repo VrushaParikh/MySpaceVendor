@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="176dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
 
     <ImageView
         android:id="@+id/imageView"
@@ -16,9 +16,6 @@
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="8dp"
         android:src="@drawable/np" />
-
-
-
     <TextView
         android:id="@+id/header_user_name"
         android:layout_width="match_parent"
@@ -27,6 +24,7 @@
         android:gravity="center"
         android:padding="8dp"
         android:text="Mr. XYZ"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#0C0C0C" />
 

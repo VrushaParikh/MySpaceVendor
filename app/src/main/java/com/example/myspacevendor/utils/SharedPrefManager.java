@@ -10,6 +10,7 @@ public class SharedPrefManager {
     private final String PREFS_NAME = "login";
     private final SharedPreferences.Editor editor;
 
+
     @SuppressLint("CommitPrefEdits")
     public SharedPrefManager(Context context) {
         this.context = context;

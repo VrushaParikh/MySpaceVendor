@@ -3,13 +3,10 @@ package com.example.myspacevendor.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,8 +28,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-import static com.example.myspacevendor.ui.LoginActivity.vendor_email;
-import static com.example.myspacevendor.ui.LoginActivity.vendor_pwd;
 import static java.lang.Integer.parseInt;
 
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -59,7 +54,10 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         clickListener();
         manageHeaderView();
         manageNameView();
+//        manageHeaderIcon();
+        getInitial();
     }
+
 
 
     private void init() {
@@ -161,7 +159,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
     /*--------------------------------- Manage Dashboard Name  View -----------------------------------------*/
 
-
     private void manageNameView() {
 
         View header = binding.includedContent.getRoot();
@@ -169,6 +166,32 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         tv.setText(sharedPrefManager.getString("name"));
 
     }
+
+    /*--------------------------------- Manage Header Icon View -----------------------------------------*/
+
+
+//    private void manageHeaderIcon() {
+//
+//        View header = binding.nav.getHeaderView(0);
+//        TextView tv = header.findViewById(R.id.user_name);
+//        tv.setText(sharedPrefManager.getString("name"));
+//
+//    }
+    /*--------------------------------- Icon Name  View -------------------------------------*/
+
+    private void getInitial() {
+        View view=binding.includedContent.getRoot();
+        TextView tt=view.findViewById(R.id.icon_text);
+        String name=sharedPrefManager.getString("name");
+
+        if (name.length() == 0)
+            return;
+        String na= String.valueOf(Character.toUpperCase(name.charAt(0)));
+        Log.d(TAG, "Name: " +na);
+        tt.setText(na);
+
+    }
+
     /*--------------------------------- Shop Profile -----------------------------------------*/
 
     private void ShopProfile(String vendor_email, String vendor_pwd) {

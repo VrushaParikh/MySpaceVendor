@@ -1,22 +1,43 @@
 package com.example.myspacevendor.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myspacevendor.Network.Api;
+import com.example.myspacevendor.Network.AppConfig;
 import com.example.myspacevendor.R;
+import com.example.myspacevendor.data.user.User;
 import com.example.myspacevendor.databinding.ActivityPaymentBinding;
+import com.example.myspacevendor.model.ServerResponse;
+import com.example.myspacevendor.utils.SharedPrefManager;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
+import static com.example.myspacevendor.ui.LoginActivity.u1;
+import static com.example.myspacevendor.ui.LoginActivity.vendor_email;
+import static com.example.myspacevendor.ui.LoginActivity.vendor_pwd;
+import static java.lang.Integer.parseInt;
+
 public class PaymentActivity extends AppCompatActivity implements PaymentResultListener {
 
     private ActivityPaymentBinding binding;
     private final Context context = this;
+    private SharedPrefManager sharedPrefManager;
     private static final String TAG = "PaymentActivity";
     Button btPay;
 
@@ -45,7 +66,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         binding.btPay.setOnClickListener(view -> {
             String sAmount = "5000";
             int amount = Math.round(Float.parseFloat(sAmount) * 100);
-            doActivity(amount);
+            doActivity(amount,u1);
         });
     }
 
@@ -58,45 +79,60 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         binding.includedToolbar.backBtn.setOnClickListener(v -> finish());
     }
 
-    private void doActivity(int amount) {
-        //Initialize RazorPay Checkout
-        Checkout checkout=new Checkout();
-
-        //set key id
-        checkout.setKeyID("rzp_test_Cf3sVOF5OHtsqX");
-
-        //set image
-        checkout.setImage(R.drawable.razorpay);
-
-        //initialize json object
-
-        JSONObject object = new JSONObject();
-
-        try {
-            //put name
-            object.put("name","My Space");
-            //put description
-            object.put("description","Test Payment");
-            //put theme color
-            object.put("theme.color","#0093DD");
-            //put currency unit
-            object.put("currency","INR");
-            //put amount
-            object.put("amount",amount);
-            //put mobile number
-            object.put("prefill.contact","9824880973");
-            //put email
-            object.put("prefill.email","vrushaparikh18@gmail.com");
-            //open razor pay checkout activity
-            checkout.open(PaymentActivity.this,object);
+    private void doActivity(int amount, User u1) {
 
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+                //Initialize RazorPay Checkout
+                Checkout checkout=new Checkout();
+
+                //set key id
+                checkout.setKeyID("rzp_test_Cf3sVOF5OHtsqX");
+
+                //set image
+                checkout.setImage(R.drawable.razorpay);
+
+                //initialize json object
+
+                JSONObject object = new JSONObject();
 
 
-    }
+
+                try {
+//                    sharedPrefManager = new SharedPrefManager(context);
+//
+//                    String phn=sharedPrefManager.getString(u1.getVendorMobile());
+//
+//                    Log.d(TAG, "onFailure: " +phn);
+
+                    //put name
+                    object.put("name","My Space");
+                    //put description
+                    object.put("description","Shop Payment");
+                    //put theme color
+                    object.put("theme.color","#0093DD");
+                    //put currency unit
+                    object.put("currency","INR");
+                    //put amount
+                    object.put("amount",amount);
+                    //put mobile number
+                    object.put("prefill.contact","984880973");
+                    //put email
+                    object.put("prefill.email",vendor_email);
+
+                    Log.d(TAG, "onFailure: " +vendor_email);
+
+                    //open razor pay checkout activity
+                    checkout.open(PaymentActivity.this,object);
+
+
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+
 
     @Override
     public void onPaymentSuccess(String s) {

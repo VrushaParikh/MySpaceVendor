@@ -27,10 +27,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
     private final Context context = this;
-
     public static String vendor_email, vendor_pwd;
     public static String id;
-
+    public static User u1;
     private static final String TAG = "LoginActivity";
 
 
@@ -95,9 +94,10 @@ public class LoginActivity extends AppCompatActivity {
                 ServerResponse response1 = response.body();
                 Config.showToast(context, response1.getMessage());
 
+                u1=response1.getUser();
 
                 if (!response1.getError()) {
-                    sendUserData(response1.getUser());
+                    sendUserData(u1);
                 }
             }
 

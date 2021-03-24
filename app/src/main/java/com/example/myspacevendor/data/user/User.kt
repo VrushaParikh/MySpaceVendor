@@ -3,7 +3,7 @@ package com.example.myspacevendor.data.user
 
 import com.google.gson.annotations.SerializedName
 
-data class User(
+public data class User(
         @SerializedName("vendor_aadhar")
         val vendorAadhar: String,
 

@@ -12,42 +12,57 @@
         android:id="@+id/included_toolbar"
         layout="@layout/toolbar" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="75dp"
-        app:srcCompat="@drawable/logo" />
+    <LinearLayout
 
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:layout_margin="25dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/icon_layout"
+        android:layout_below="@id/included_toolbar">
+
+        <include
+            android:id="@+id/included_icon"
+            layout="@layout/layout_image_icon"
+            android:layout_width="100dp"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_height="match_parent" />
         <TextView
-            android:id="@+id/user_name"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/imageView"
-            android:layout_marginStart="110dp"
-            android:layout_marginLeft="138dp"
-            android:layout_marginTop="100dp"
-            android:text="Welcome XYZ Vendor!"
+            android:layout_marginTop="21dp"
+            android:layout_alignLeft="@id/included_icon"
+            android:text="Welcome!  "
             android:textColor="@color/colorBlack"
             android:textSize="18sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:layout_alignLeft="@id/included_icon"
+            android:text="XYZ Vendor!"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout >
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/imageView"
-        android:layout_marginTop="30dp"
+        android:layout_below="@id/icon_layout"
         android:background="#F3F1F1">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/block"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
-
             android:layout_marginEnd="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="30dp"
@@ -57,7 +72,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="550dp"
                 android:background="#FFFFFF"
                 android:backgroundTint="#FFFFFF"
                 android:orientation="vertical">
@@ -75,6 +90,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_margin="20dp"
+
                         android:layout_marginEnd="15dp"
                         android:layout_weight="1"
                         android:clickable="true"
