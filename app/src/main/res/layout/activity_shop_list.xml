@@ -10,6 +10,15 @@
         android:id="@+id/included_toolbar"
         layout="@layout/custom_toolbar" />
 
+    <ProgressBar
+        android:id="@+id/loading_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminateTint="@color/colorPrimary"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="visible" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/list"
         android:layout_width="match_parent"
@@ -32,14 +41,7 @@
         tools:listitem="@layout/layout_shops" />
 
 
-    <ProgressBar
-        android:id="@+id/loading_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:indeterminateTint="@color/colorPrimary"
-        android:indeterminateTintMode="src_atop"
-        android:visibility="visible" />
+
 
     </androidx.cardview.widget.CardView>
 
