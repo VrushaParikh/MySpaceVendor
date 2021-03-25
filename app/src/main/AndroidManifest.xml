@@ -30,14 +30,12 @@
         <activity android:name=".ui.AdminDashActivity" />
         <activity android:name=".ui.ScanTokenActivity"/>
         <activity android:name=".ui.SacnnerView"/>
-        <activity android:name=".ui.ShopListActivity">
-
-        </activity>
-        <activity android:name=".ui.VendorListActivity">
-
-        </activity>
+        <activity android:name=".ui.ShopListActivity"/>
+        <activity android:name=".ui.AdminShopListActivity"/>
+        <activity android:name=".ui.VendorListActivity"/>
         <activity android:name=".ui.PaymentActivity"/>
-                <activity
+
+        <activity
             android:name=".ui.TermsPoliciesActivity"
             android:windowSoftInputMode="adjustResize">
 
@@ -48,6 +46,7 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+
         <activity android:name=".ui.ViewShopActivity" />
     </application>
 

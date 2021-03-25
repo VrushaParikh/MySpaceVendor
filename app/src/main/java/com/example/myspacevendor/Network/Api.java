@@ -85,7 +85,7 @@ public interface Api {
     @FormUrlEncoded
     @POST(my_url + "all_shop")
     Call<ServerResponse> getAllShop(
-            @Field("vendor_id") int id
+            @Field("vendor_id") String id
     );
 
     @FormUrlEncoded

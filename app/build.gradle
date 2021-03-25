@@ -70,7 +70,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
 
-
+    // Circular ImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     //Token Scanner
     implementation 'me.dm7.barcodescanner:zxing:1.9.13'

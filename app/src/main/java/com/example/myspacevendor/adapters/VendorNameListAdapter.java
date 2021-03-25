@@ -39,7 +39,7 @@ public class VendorNameListAdapter extends RecyclerView.Adapter<VendorNameListAd
         holder.binding.vendorId.setText(vendor.getVendorId());
         holder.binding.vendorName.setText(vendor.getVendorName());
 
-        holder.binding.getRoot().setOnClickListener(view -> {
+        holder.binding.vendorDeet.setOnClickListener(view -> {
             vendorNameInterface.onClick(vendor);
         });
 

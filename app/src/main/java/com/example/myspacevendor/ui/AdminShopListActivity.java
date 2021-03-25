@@ -9,9 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myspacevendor.Network.Api;
 import com.example.myspacevendor.Network.AppConfig;
-import com.example.myspacevendor.adapters.VendorNameListAdapter;
-import com.example.myspacevendor.data.Vendor_Name_List;
-import com.example.myspacevendor.databinding.ActivityVendorListBinding;
+import com.example.myspacevendor.adapters.ShopAdapter;
+import com.example.myspacevendor.data.Shop;
 import com.example.myspacevendor.model.ServerResponse;
 import com.example.myspacevendor.utils.Config;
 import com.example.myspacevendor.utils.SharedPrefManager;
@@ -24,30 +23,31 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import static com.example.myspacevendor.ui.VendorListActivity.vid;
 
-public class VendorListActivity extends AppCompatActivity implements VendorNameListAdapter.VendorNameInterface {
+public class AdminShopListActivity extends AppCompatActivity implements ShopAdapter.RestaurantInterface {
 
-    private ActivityVendorListBinding binding;
+    private com.example.myspacevendor.databinding.ActivityAdminShopListBinding binding;
+
     private Context context = this;
-    public static String vid;
 
-    private List<Vendor_Name_List> vendor_name_listArrayList = new ArrayList<>();
+    private List<Shop> shopArrayList = new ArrayList<>();
 
-    private static final String TAG = "VendorList Activity";
+    private static final String TAG = "AdminShopListActivity";
 
-    private VendorNameListAdapter vendorNameListAdapter;
+    private ShopAdapter shopAdapter;
     private SharedPrefManager sharedPrefManager;
-
+    private int vendorId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityVendorListBinding.inflate(getLayoutInflater());
+        binding = com.example.myspacevendor.databinding.ActivityAdminShopListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         handleToolbar();
         init();
-        fetchVendors();
+        //fetchShops(shopId);
 //        clickListener();
 
 
@@ -56,11 +56,17 @@ public class VendorListActivity extends AppCompatActivity implements VendorNameL
 
     private void init() {
 
+        Config.showToast(context, "" + vid);
+
+        fetchShops();
+
         sharedPrefManager = new SharedPrefManager(context);
 
-        vendorNameListAdapter = new VendorNameListAdapter(vendor_name_listArrayList, this);
+
+        shopAdapter = new ShopAdapter(shopArrayList, this);
         binding.recyclerView.setHasFixedSize(true);
-        binding.recyclerView.setAdapter(vendorNameListAdapter);
+        binding.recyclerView.setAdapter(shopAdapter);
+
 
     }
 
@@ -68,52 +74,43 @@ public class VendorListActivity extends AppCompatActivity implements VendorNameL
 //
 //        binding..setOnClickListener(v -> openActivity(ShopListActivity.class));
 //
-//
-//
-//
 //    }
-//
-//
-//    private void openActivity(Class aclass) {
-//        Intent intent = new Intent(context, aclass);
-//        startActivity(intent);
-//    }
+
+
+    private void openActivity(Class aclass) {
+        Intent intent = new Intent(context, aclass);
+        startActivity(intent);
+    }
 
 
     /*--------------------------------- Handle Toolbar --------------------------------*/
 
     private void handleToolbar() {
 
-        binding.includedToolbar.title.setText("Manage Timeslot");
+        binding.includedToolbar.title.setText("Shop List");
         binding.includedToolbar.backBtn.setOnClickListener(v -> finish());
     }
+
 
     /*----------------------------- Get Shop Data From Server ----------------------------*/
 
 
-    private void fetchVendors() {
+    private void fetchShops() {
 
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
 
-        Call<ServerResponse> call = service.vendorList();
+        Call<ServerResponse> call = service.getAllShop(vid);
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
 
-                if (response.body() != null) {
-                    ServerResponse serverResponse = response.body();
+                ServerResponse serverResponse = response.body();
+                shopArrayList.clear();
+                shopArrayList.addAll(serverResponse.getShopList());
+                shopAdapter.notifyDataSetChanged();
 
-                    Config.showToast(context, serverResponse.getMessage());
-
-
-                    vendor_name_listArrayList.clear();
-                    vendor_name_listArrayList.addAll(serverResponse.getVendor_name_lists());
-                    vendorNameListAdapter.notifyDataSetChanged();
-                    binding.loadingSpinner.setVisibility(View.GONE);
-                } else {
-                    Config.showToast(context, "Response Body Is Null");
-                }
+                binding.loadingSpinner.setVisibility(View.GONE);
             }
 
             @Override
@@ -124,14 +121,20 @@ public class VendorListActivity extends AppCompatActivity implements VendorNameL
 
     }
 
-
-
     @Override
-    public void onClick(Vendor_Name_List vendorNameList) {
+    public void onClick(Shop shop) {
 
-        Intent intent = new Intent(context, AdminShopListActivity.class);
-        intent.putExtra("vendor_id", vendorNameList.getVendorId());
-        vid = vendorNameList.getVendorId();
+
+        Intent intent = new Intent(context,ViewShopActivity.class);
+        intent.putExtra("shop_id",shop.getShopId());
         startActivity(intent);
     }
+
 }
+
+
+
+
+
+
+
