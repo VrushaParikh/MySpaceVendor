@@ -23,7 +23,6 @@ import retrofit2.Retrofit;
 
 public class ViewShopActivity extends AppCompatActivity {
 
-
     private int shopId = 0;
     private Context context = this;
     private ActivityViewShopBinding binding;
@@ -47,7 +46,6 @@ public class ViewShopActivity extends AppCompatActivity {
 
         fetchShops(String.valueOf(shopId));
         clickListener();
-
 
     }
 
