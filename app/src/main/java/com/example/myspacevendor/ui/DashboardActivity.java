@@ -100,11 +100,15 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         switch (item.getItemId()) {
             case R.id.nav_home:
-                Config.showToast(activity, "Home");
+                openActivity(DashboardActivity.class);
                 return true;
 
-            case R.id.nav_gallery:
+            case R.id.nav_edit:
                 Config.showToast(activity, "Edit Profile");
+                return true;
+
+            case R.id.nav_setting:
+                openActivity(ChangePasswordActivity.class);
                 return true;
 
             case R.id.nav_logout:
@@ -168,8 +172,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     }
 
     /*--------------------------------- Manage Header Icon View -----------------------------------------*/
-
-
 //    private void manageHeaderIcon() {
 //
 //        View header = binding.nav.getHeaderView(0);

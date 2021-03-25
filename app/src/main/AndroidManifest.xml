@@ -34,8 +34,9 @@
         <activity android:name=".ui.AdminShopListActivity"/>
         <activity android:name=".ui.VendorListActivity"/>
         <activity android:name=".ui.PaymentActivity"/>
-
-        <activity
+        <activity android:name=".ui.AdminViewShopActivity"/>
+        <activity android:name=".ui.ChangePasswordActivity"/>
+                <activity
             android:name=".ui.TermsPoliciesActivity"
             android:windowSoftInputMode="adjustResize">
 
@@ -46,7 +47,6 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-
         <activity android:name=".ui.ViewShopActivity" />
     </application>
 

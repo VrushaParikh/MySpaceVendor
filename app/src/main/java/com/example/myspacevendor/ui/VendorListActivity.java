@@ -29,11 +29,11 @@ public class VendorListActivity extends AppCompatActivity implements VendorNameL
 
     private ActivityVendorListBinding binding;
     private Context context = this;
-    public static String vid;
 
     private List<Vendor_Name_List> vendor_name_listArrayList = new ArrayList<>();
 
     private static final String TAG = "VendorList Activity";
+    public static String vid;
 
     private VendorNameListAdapter vendorNameListAdapter;
     private SharedPrefManager sharedPrefManager;
@@ -84,7 +84,7 @@ public class VendorListActivity extends AppCompatActivity implements VendorNameL
 
     private void handleToolbar() {
 
-        binding.includedToolbar.title.setText("Manage Timeslot");
+        binding.includedToolbar.title.setText("Admin: Vendors Details");
         binding.includedToolbar.backBtn.setOnClickListener(v -> finish());
     }
 
@@ -125,13 +125,12 @@ public class VendorListActivity extends AppCompatActivity implements VendorNameL
     }
 
 
-
     @Override
     public void onClick(Vendor_Name_List vendorNameList) {
 
         Intent intent = new Intent(context, AdminShopListActivity.class);
+        vid=vendorNameList.getVendorId();
         intent.putExtra("vendor_id", vendorNameList.getVendorId());
-        vid = vendorNameList.getVendorId();
         startActivity(intent);
     }
 }

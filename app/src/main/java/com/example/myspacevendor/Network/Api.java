@@ -123,5 +123,13 @@ public interface Api {
     Call<ServerResponse> scanToken(
             @Field("booking_id") String bookingId
     );
+
+    @FormUrlEncoded
+    @POST(my_url + "change")
+    Call<ServerResponse> change(
+            @Field("email") String email,
+            @Field("old_pwd") String old_pwd,
+            @Field("new_pwd") String new_pwd
+    );
 }
 

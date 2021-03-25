@@ -125,7 +125,7 @@ public class AdminShopListActivity extends AppCompatActivity implements ShopAdap
     public void onClick(Shop shop) {
 
 
-        Intent intent = new Intent(context,ViewShopActivity.class);
+        Intent intent = new Intent(context,AdminViewShopActivity.class);
         intent.putExtra("shop_id",shop.getShopId());
         startActivity(intent);
     }
