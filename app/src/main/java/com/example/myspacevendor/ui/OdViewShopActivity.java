@@ -12,7 +12,7 @@ import com.example.myspacevendor.Network.Api;
 import com.example.myspacevendor.Network.AppConfig;
 import com.example.myspacevendor.data.Shop;
 
-import com.example.myspacevendor.databinding.ActivityViewShopBinding;
+import com.example.myspacevendor.databinding.ActivityOdViewShopBinding;
 import com.example.myspacevendor.model.ServerResponse;
 import com.example.myspacevendor.utils.Config;
 
@@ -21,18 +21,23 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class ViewShopActivity extends AppCompatActivity {
+import static com.example.myspacevendor.ui.LoginActivity.id;
+import static com.example.myspacevendor.ui.ViewShopActivity.shopId;
+
+public class OdViewShopActivity extends AppCompatActivity {
+
 
     public static int shopId = 0;
+    public static int id=0;
     private Context context = this;
-    private ActivityViewShopBinding binding;
+    private ActivityOdViewShopBinding binding;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityViewShopBinding.inflate(getLayoutInflater());
+        binding = ActivityOdViewShopBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         handleToolbar();
         init();
@@ -54,15 +59,16 @@ public class ViewShopActivity extends AppCompatActivity {
 
     private void handleToolbar() {
 
-        binding.includedToolbar.title.setText("Shop Information");
+        binding.includedToolbar.title.setText(" Offer Deals: Shop Information");
         binding.includedToolbar.backBtn.setOnClickListener(v -> finish());
     }
 
     private void clickListener() {
 
-        binding.back.setOnClickListener(v -> {
-            Intent intent = new Intent(context, MslotActivity.class);
+        binding.od.setOnClickListener(v -> {
+            Intent intent = new Intent(context, OffersDealsActivity.class);
             intent.putExtra("shop_id", shopId);
+            intent.putExtra("vid",id);
             startActivity(intent);
         });
     }

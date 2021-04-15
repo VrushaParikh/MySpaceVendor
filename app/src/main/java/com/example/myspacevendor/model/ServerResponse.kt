@@ -1,5 +1,6 @@
 package com.example.myspacevendor.model
 
+import com.example.myspacevendor.data.Booking
 import com.example.myspacevendor.data.Shop
 import com.example.myspacevendor.data.Vendor_Name_List
 import com.example.myspacevendor.data.slot.SlotData
@@ -32,6 +33,11 @@ class ServerResponse {
     @SerializedName("user")
     @Expose
     var user: User? = null
+
+    @SerializedName("bookings")
+    @Expose
+    var bookingList: List<Booking>? = null
+
 
 
     @SerializedName("slots")

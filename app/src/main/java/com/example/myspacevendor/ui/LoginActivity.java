@@ -140,6 +140,8 @@ public class LoginActivity extends AppCompatActivity {
     private void sendUserData(User user) {
 
         SharedPrefManager sharedPrefManager = new SharedPrefManager(context);
+        id = user.getVendorId();
+        Log.d(TAG, "ID: " + id);
         sharedPrefManager.setInt("id", Integer.parseInt(user.getVendorId()));
         sharedPrefManager.setString("name", user.getVendorName());
 

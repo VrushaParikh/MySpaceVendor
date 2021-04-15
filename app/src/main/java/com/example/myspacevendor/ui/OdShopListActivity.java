@@ -7,10 +7,14 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import com.example.myspacevendor.Network.Api;
 import com.example.myspacevendor.Network.AppConfig;
 import com.example.myspacevendor.adapters.ShopAdapter;
 import com.example.myspacevendor.data.Shop;
+import com.example.myspacevendor.databinding.ActivityOdShopListBinding;
+
+
 import com.example.myspacevendor.model.ServerResponse;
 import com.example.myspacevendor.utils.Config;
 import com.example.myspacevendor.utils.SharedPrefManager;
@@ -23,31 +27,33 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-import static com.example.myspacevendor.ui.VendorListActivity.vid;
+import static com.example.myspacevendor.utils.Config.user_id;
 
-public class AdminShopListActivity extends AppCompatActivity implements ShopAdapter.RestaurantInterface {
 
-    private com.example.myspacevendor.databinding.ActivityAdminShopListBinding binding;
+public class OdShopListActivity extends AppCompatActivity implements ShopAdapter.RestaurantInterface {
+
+    private ActivityOdShopListBinding binding;
 
     private Context context = this;
 
     private List<Shop> shopArrayList = new ArrayList<>();
 
-    private static final String TAG = "AdminShopListActivity";
+    private static final String TAG = "OdShopListActivity";
+
 
     private ShopAdapter shopAdapter;
     private SharedPrefManager sharedPrefManager;
-    private int vendorId = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = com.example.myspacevendor.databinding.ActivityAdminShopListBinding.inflate(getLayoutInflater());
+        binding = ActivityOdShopListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         handleToolbar();
         init();
-        //fetchShops(shopId);
+        fetchShops();
 //        clickListener();
 
 
@@ -56,16 +62,14 @@ public class AdminShopListActivity extends AppCompatActivity implements ShopAdap
 
     private void init() {
 
-        Config.showToast(context, "" + vid);
-
-        fetchShops();
-
         sharedPrefManager = new SharedPrefManager(context);
 
 
         shopAdapter = new ShopAdapter(shopArrayList, this);
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setAdapter(shopAdapter);
+        binding.addShop.setOnClickListener(view -> openActivity(ShopInfoActivity.class));
+
 
 
     }
@@ -87,7 +91,7 @@ public class AdminShopListActivity extends AppCompatActivity implements ShopAdap
 
     private void handleToolbar() {
 
-        binding.includedToolbar.title.setText("Admin: Shop List");
+        binding.includedToolbar.title.setText("Offer Deals: Shop List");
         binding.includedToolbar.backBtn.setOnClickListener(v -> finish());
     }
 
@@ -100,7 +104,7 @@ public class AdminShopListActivity extends AppCompatActivity implements ShopAdap
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
 
-        Call<ServerResponse> call = service.getAllShop(vid);
+        Call<ServerResponse> call = service.getAllShop(String.valueOf(user_id));
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
@@ -125,13 +129,13 @@ public class AdminShopListActivity extends AppCompatActivity implements ShopAdap
     public void onClick(Shop shop) {
 
 
-        Intent intent = new Intent(context,AdminViewShopActivity.class);
+        Intent intent = new Intent(context,OdViewShopActivity.class);
+
         intent.putExtra("shop_id",shop.getShopId());
         startActivity(intent);
     }
 
 }
-
 
 
 

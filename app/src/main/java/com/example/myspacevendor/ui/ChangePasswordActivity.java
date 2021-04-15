@@ -32,7 +32,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
 
 
-    private static final String TAG = "ShopProfileActivity";
+    private static final String TAG = "ChangePasswordActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -62,7 +62,15 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
 
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(old_pwd) || TextUtils.isEmpty(new_pwd)) {
-                binding.edtEmail.setError("All Fields are Required!!");
+                if (TextUtils.isEmpty(email)) {
+                    binding.edtEmail.setError("Email Address Required!!");
+                }
+                if (TextUtils.isEmpty(old_pwd)) {
+                    binding.edtOldpwd.setError("Enter old password!!");
+                }
+                if (TextUtils.isEmpty(new_pwd)) {
+                    binding.edtNewPwd.setError("Enter new password!!");
+                }
                 return;
             }
 
@@ -92,9 +100,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
                         Config.showToast(context, serverResponse.getMessage());
                         openActivity(DashboardActivity.class);
                         finish();
-
-
-
 
                     } else {
                         Config.showToast(context, serverResponse.getMessage());

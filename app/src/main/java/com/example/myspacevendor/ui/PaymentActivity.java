@@ -59,9 +59,6 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
 
     }
 
-
-
-
     private void clickListener() {
         binding.btPay.setOnClickListener(view -> {
             String sAmount = "5000";

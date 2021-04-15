@@ -36,7 +36,10 @@
         <activity android:name=".ui.PaymentActivity"/>
         <activity android:name=".ui.AdminViewShopActivity"/>
         <activity android:name=".ui.ChangePasswordActivity"/>
-                <activity
+        <activity android:name=".ui.ViewTokenActivity"/>
+        <activity android:name=".ui.OdShopListActivity"/>
+        <activity android:name=".ui.OdViewShopActivity"/>
+        <activity
             android:name=".ui.TermsPoliciesActivity"
             android:windowSoftInputMode="adjustResize">
 

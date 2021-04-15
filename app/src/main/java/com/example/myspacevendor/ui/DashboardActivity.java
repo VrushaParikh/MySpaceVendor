@@ -81,8 +81,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     }
     /*--------------------------------- On Options Item Selected -----------------------------------------*/
 
-
-    @Override
+   @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (toggle.onOptionsItemSelected(item))
@@ -132,7 +131,11 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         });
         binding.includedContent.block2.setOnClickListener(v -> {
-            openActivity(OffersDealsActivity.class);
+            openActivity(OdShopListActivity.class);
+        });
+
+        binding.includedContent.block3.setOnClickListener(v -> {
+            openActivity(ViewTokenActivity.class);
         });
         binding.includedContent.block4.setOnClickListener(v -> {
             openActivity(ScanTokenActivity.class);
@@ -157,6 +160,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         View header = binding.nav.getHeaderView(0);
         TextView tv = header.findViewById(R.id.header_user_name);
+        String na=sharedPrefManager.getString("name");
+        Log.d(TAG, "Name: " +na);
         tv.setText(sharedPrefManager.getString("name"));
 
     }

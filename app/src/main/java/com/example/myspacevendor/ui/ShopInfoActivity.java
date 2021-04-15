@@ -101,7 +101,7 @@ public class ShopInfoActivity extends AppCompatActivity {
                 }
 
                 if (TextUtils.isEmpty(shop_ifsc)) {
-                    binding.edtBankifsc.setError("IDSC Number Required!!");
+                    binding.edtBankifsc.setError("IFSC Number Required!!");
                 }
 
                 if (TextUtils.isEmpty(shop_acc_no)) {

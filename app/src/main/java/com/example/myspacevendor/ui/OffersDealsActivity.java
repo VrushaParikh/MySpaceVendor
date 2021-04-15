@@ -28,11 +28,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import static com.example.myspacevendor.ui.LoginActivity.id;
+import static com.example.myspacevendor.ui.OdViewShopActivity.shopId;
+
+
 public class OffersDealsActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 101;
     private ActivityOffersDealsBinding binding;
+
     private Context context = this;
+
 
     private String offer_name, offer_desc, offer_start, offer_end, sdd, smm, syy, edd, emm, eyy;
 
@@ -63,6 +69,9 @@ public class OffersDealsActivity extends AppCompatActivity {
     }
 
     private void init() {
+        Intent intent = getIntent();
+        shopId = intent.getIntExtra("shop_id", 0);
+        id = String.valueOf(intent.getIntExtra("vid", 0));
 
         binding.submit.setOnClickListener(view -> {
             offer_name = binding.edtOffername.getText().toString().trim();
@@ -95,7 +104,8 @@ public class OffersDealsActivity extends AppCompatActivity {
                 return;
             }
 
-            doOffersDealsRegister(offer_name, offer_desc, offer_start, offer_end, bitmap);
+            Log.d(TAG, "IDS: " + id+ "-------" +shopId );
+            doOffersDealsRegister(id,String.valueOf(shopId) ,offer_name, offer_desc, offer_start, offer_end, bitmap);
 
         });
 
@@ -106,20 +116,24 @@ public class OffersDealsActivity extends AppCompatActivity {
 
     private void handleToolbar() {
 
-        binding.includedToolbar.title.setText("Offers and Deals");
+        binding.includedToolbar.title.setText("Offers and Deal");
         binding.includedToolbar.backBtn.setOnClickListener(v -> finish());
     }
 
 
-    private void doOffersDealsRegister(String offname, String offdesc, String offsdate, String offedate, Bitmap bitmap) {
+    private void doOffersDealsRegister(String vendor_id,String shop_id,String offname, String offdesc, String offsdate, String offedate, Bitmap bitmap) {
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
 
-        Call<ServerResponse> call = service.OffersDeals(offname, offdesc, offsdate, offedate, getImageString(bitmap));
+        Call<ServerResponse> call = service.OffersDeals(vendor_id,shop_id,offname, offdesc, offsdate, offedate, getImageString(bitmap));
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 Config.showToast(context, response.body().getMessage());
+                openActivity(DashboardActivity.class);
+                finish();
+
+
             }
 
             @Override
@@ -132,6 +146,7 @@ public class OffersDealsActivity extends AppCompatActivity {
     }
 
     private void clickListener() {
+
         binding.odSubmit.setOnClickListener(view -> showFileChooser());
     }
 
@@ -173,5 +188,10 @@ public class OffersDealsActivity extends AppCompatActivity {
         return Base64.encodeToString(byteFormat, Base64.NO_WRAP);
     }
 
+    private void openActivity(Class aclass) {
+        Intent intent = new Intent(context, aclass);
+        startActivity(intent);
+
+    }
 
 }

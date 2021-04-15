@@ -42,6 +42,7 @@ public class ShopListActivity extends AppCompatActivity implements ShopAdapter.R
     private List<Shop> shopArrayList = new ArrayList<>();
 
     private static final String TAG = "ShopListActivity";
+    public static String sid;
 
     private ShopAdapter shopAdapter;
     private SharedPrefManager sharedPrefManager;
@@ -131,6 +132,7 @@ public class ShopListActivity extends AppCompatActivity implements ShopAdapter.R
 
 
         Intent intent = new Intent(context,ViewShopActivity.class);
+        sid= String.valueOf(shop.getShopId());
         intent.putExtra("shop_id",shop.getShopId());
         startActivity(intent);
     }

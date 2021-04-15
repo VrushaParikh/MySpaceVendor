@@ -117,7 +117,7 @@ public class ScanTokenActivity extends AppCompatActivity {
                 if (response.body() != null) {
 
                     ServerResponse response1 = response.body();
-                    displaySuccessResult(!response1.getError());
+                    displaySuccessResult(response1.getError());
                 }
             }
 
@@ -144,9 +144,10 @@ public class ScanTokenActivity extends AppCompatActivity {
         builder.setView(qrDialogBinding.getRoot());
 
 
+
         if (isCorrect) {
             qrDialogBinding.imageQR.setImageResource(R.drawable.ic_approve);
-            qrDialogBinding.tvStatus.setText(getString(R.string.booking_success));
+            qrDialogBinding.tvStatus.setText("Scanned Successfully");
         } else {
             qrDialogBinding.imageQR.setImageResource(R.drawable.ic_rejected);
             qrDialogBinding.tvStatus.setText(getString(R.string.booking_failed));
