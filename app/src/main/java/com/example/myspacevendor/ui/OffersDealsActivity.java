@@ -15,10 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myspacevendor.Network.Api;
 import com.example.myspacevendor.Network.AppConfig;
 import com.example.myspacevendor.R;
-
 import com.example.myspacevendor.databinding.ActivityOffersDealsBinding;
 import com.example.myspacevendor.model.ServerResponse;
 import com.example.myspacevendor.utils.Config;
+import com.example.myspacevendor.utils.SharedPrefManager;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -29,7 +29,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import static com.example.myspacevendor.ui.LoginActivity.id;
-import static com.example.myspacevendor.ui.OdViewShopActivity.shopId;
 
 
 public class OffersDealsActivity extends AppCompatActivity {
@@ -48,14 +47,19 @@ public class OffersDealsActivity extends AppCompatActivity {
     //Bitmap to get image from gallery
     private Bitmap bitmap;
 
+    private SharedPrefManager sharedPrefManager;
+
     //Uri to store the image uri
     private Uri filePath;
+
+    private int shopId;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offers_deals);
+
         binding = ActivityOffersDealsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -63,15 +67,15 @@ public class OffersDealsActivity extends AppCompatActivity {
         init();
         clickListener();
 
-//        buttonUpload = (Button) findViewById(R.id.od_submit);
-
 
     }
 
     private void init() {
-        Intent intent = getIntent();
-        shopId = intent.getIntExtra("shop_id", 0);
-        id = String.valueOf(intent.getIntExtra("vid", 0));
+
+        sharedPrefManager = new SharedPrefManager(context);
+
+        shopId = sharedPrefManager.getInt("shop_id");
+
 
         binding.submit.setOnClickListener(view -> {
             offer_name = binding.edtOffername.getText().toString().trim();
@@ -104,8 +108,8 @@ public class OffersDealsActivity extends AppCompatActivity {
                 return;
             }
 
-            Log.d(TAG, "IDS: " + id+ "-------" +shopId );
-            doOffersDealsRegister(id,String.valueOf(shopId) ,offer_name, offer_desc, offer_start, offer_end, bitmap);
+            Log.d(TAG, "IDS: " + id + "-------" + shopId);
+            doOffersDealsRegister(String.valueOf(Config.user_id), String.valueOf(shopId), offer_name, offer_desc, offer_start, offer_end, bitmap);
 
         });
 
@@ -121,11 +125,13 @@ public class OffersDealsActivity extends AppCompatActivity {
     }
 
 
-    private void doOffersDealsRegister(String vendor_id,String shop_id,String offname, String offdesc, String offsdate, String offedate, Bitmap bitmap) {
+    private void doOffersDealsRegister(String vendor_id, String shop_id, String offname, String offdesc, String offsdate, String offedate, Bitmap bitmap) {
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
 
-        Call<ServerResponse> call = service.OffersDeals(vendor_id,shop_id,offname, offdesc, offsdate, offedate, getImageString(bitmap));
+
+
+        Call<ServerResponse> call = service.OffersDeals(Config.user_id, shopId, offname, offdesc, offsdate, offedate, getImageString(bitmap));
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {

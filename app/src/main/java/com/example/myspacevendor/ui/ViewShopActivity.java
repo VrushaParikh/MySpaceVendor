@@ -15,6 +15,7 @@ import com.example.myspacevendor.data.Shop;
 import com.example.myspacevendor.databinding.ActivityViewShopBinding;
 import com.example.myspacevendor.model.ServerResponse;
 import com.example.myspacevendor.utils.Config;
+import com.example.myspacevendor.utils.SharedPrefManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,9 +24,11 @@ import retrofit2.Retrofit;
 
 public class ViewShopActivity extends AppCompatActivity {
 
-    public static int shopId = 0;
+    private int shopId = 0;
     private Context context = this;
     private ActivityViewShopBinding binding;
+
+    private SharedPrefManager sharedPrefManager;
 
 
     @Override
@@ -39,8 +42,10 @@ public class ViewShopActivity extends AppCompatActivity {
     }
 
     private void init() {
-        Intent intent = getIntent();
-        shopId = intent.getIntExtra("shop_id", 0);
+
+        sharedPrefManager = new SharedPrefManager(context);
+
+        shopId = sharedPrefManager.getInt("shop_id");
 
 
         Config.showToast(context, "" + shopId);

@@ -15,9 +15,9 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/included_toolbar"
         android:background="#FFFFFF"
-        android:fillViewport="false"
-        android:layout_below="@id/included_toolbar">
+        android:fillViewport="false">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -135,9 +135,9 @@
                         android:textColor="@color/colorBlack" />
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <Button
                             android:id="@+id/od_submit"
@@ -145,16 +145,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
-                            android:layout_marginLeft="5dp"
                             android:gravity="center|center_horizontal"
                             android:text="Upload"
-                            android:textColor="@color/colorWhite"
-                             />
+                            android:textColor="@color/colorWhite" />
 
                         <ImageView
                             android:id="@+id/imageView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             tools:srcCompat="@tools:sample/avatars" />
 
                     </LinearLayout>

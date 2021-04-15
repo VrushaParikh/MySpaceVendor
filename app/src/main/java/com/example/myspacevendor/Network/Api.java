@@ -52,8 +52,8 @@ public interface Api {
     @FormUrlEncoded
     @POST(my_url + "offersdeals")
     Call<ServerResponse> OffersDeals(
-            @Field("vendor_id") String vendor_id,
-            @Field("shop_id") String shop_id,
+            @Field("vendor_id") int vendor_id,
+            @Field("shop_id") int shop_id,
             @Field("offer_name") String offer_name,
             @Field("offer_desc") String offer_desc,
             @Field("offer_start") String offer_start,
@@ -70,9 +70,8 @@ public interface Api {
     @FormUrlEncoded
     @POST(my_url + "get_token_view")
     Call<ServerResponse> getTokenView(
-            @Field("vendor_id") String vendor_id,
-            @Field("shop_id")  int shop_id);
-
+            @Field("shop_id") int shop_id
+    );
 
 
     @FormUrlEncoded

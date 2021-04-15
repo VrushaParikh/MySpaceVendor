@@ -3,7 +3,6 @@ package com.example.myspacevendor.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,10 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myspacevendor.Network.Api;
 import com.example.myspacevendor.Network.AppConfig;
 import com.example.myspacevendor.data.Shop;
-
 import com.example.myspacevendor.databinding.ActivityOdViewShopBinding;
 import com.example.myspacevendor.model.ServerResponse;
 import com.example.myspacevendor.utils.Config;
+import com.example.myspacevendor.utils.SharedPrefManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,16 +21,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import static com.example.myspacevendor.ui.LoginActivity.id;
-import static com.example.myspacevendor.ui.ViewShopActivity.shopId;
 
 public class OdViewShopActivity extends AppCompatActivity {
 
 
-    public static int shopId = 0;
-    public static int id=0;
     private Context context = this;
     private ActivityOdViewShopBinding binding;
-
+    private SharedPrefManager sharedPrefManager;
+    private int shopId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,9 +41,10 @@ public class OdViewShopActivity extends AppCompatActivity {
     }
 
     private void init() {
-        Intent intent = getIntent();
-        shopId = intent.getIntExtra("shop_id", 0);
 
+        sharedPrefManager = new SharedPrefManager(context);
+
+        shopId = sharedPrefManager.getInt("shop_id");
 
         Config.showToast(context, "" + shopId);
 
@@ -68,7 +66,6 @@ public class OdViewShopActivity extends AppCompatActivity {
         binding.od.setOnClickListener(v -> {
             Intent intent = new Intent(context, OffersDealsActivity.class);
             intent.putExtra("shop_id", shopId);
-            intent.putExtra("vid",id);
             startActivity(intent);
         });
     }
