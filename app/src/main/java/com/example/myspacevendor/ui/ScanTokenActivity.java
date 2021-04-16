@@ -131,7 +131,7 @@ public class ScanTokenActivity extends AppCompatActivity {
 
     /*----------------------------- Display QR Dialog  ---------------------------------*/
 
-    private void displaySuccessResult(boolean isCorrect, String msg) {
+    private void displaySuccessResult(boolean isWrong, String msg) {
 
 
         // Create an alert builder
@@ -142,13 +142,12 @@ public class ScanTokenActivity extends AppCompatActivity {
         builder.setView(qrDialogBinding.getRoot());
 
 
-        if (isCorrect) {
+        if (!isWrong) {
             qrDialogBinding.imageQR.setImageResource(R.drawable.ic_approve);
-            qrDialogBinding.tvStatus.setText(msg);
         } else {
             qrDialogBinding.imageQR.setImageResource(R.drawable.ic_rejected);
-            qrDialogBinding.tvStatus.setText(msg);
         }
+        qrDialogBinding.tvStatus.setText(msg);
 
         // add a button
         builder.setPositiveButton(
