@@ -49,10 +49,10 @@ public class ScanTokenActivity extends AppCompatActivity {
         handleToolbar();
         init();
     }
-    private void init()
-    {
-        scan_text=binding.result;
-        scan_btn=binding.scan;
+
+    private void init() {
+        scan_text = binding.result;
+        scan_btn = binding.scan;
 
         scan_btn.setOnClickListener(view -> {
 
@@ -77,9 +77,7 @@ public class ScanTokenActivity extends AppCompatActivity {
                 Config.showToast(context, "Data is NULL");
 
             }
-        }
-
-        else {
+        } else {
             Config.showToast(context, "Response Not Found");
 
         }
@@ -117,7 +115,7 @@ public class ScanTokenActivity extends AppCompatActivity {
                 if (response.body() != null) {
 
                     ServerResponse response1 = response.body();
-                    displaySuccessResult(response1.getError());
+                    displaySuccessResult(response1.getError(), response1.getMessage());
                 }
             }
 
@@ -133,7 +131,7 @@ public class ScanTokenActivity extends AppCompatActivity {
 
     /*----------------------------- Display QR Dialog  ---------------------------------*/
 
-    private void displaySuccessResult(boolean isCorrect) {
+    private void displaySuccessResult(boolean isWrong, String msg) {
 
 
         // Create an alert builder
@@ -144,14 +142,12 @@ public class ScanTokenActivity extends AppCompatActivity {
         builder.setView(qrDialogBinding.getRoot());
 
 
-
-        if (isCorrect) {
+        if (!isWrong) {
             qrDialogBinding.imageQR.setImageResource(R.drawable.ic_approve);
-            qrDialogBinding.tvStatus.setText("Scanned Successfully");
         } else {
             qrDialogBinding.imageQR.setImageResource(R.drawable.ic_rejected);
-            qrDialogBinding.tvStatus.setText(getString(R.string.booking_failed));
         }
+        qrDialogBinding.tvStatus.setText(msg);
 
         // add a button
         builder.setPositiveButton(

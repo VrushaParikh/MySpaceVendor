@@ -14,6 +14,7 @@ import com.example.myspacevendor.adapters.ViewHistoryAdapter;
 import com.example.myspacevendor.data.Booking;
 import com.example.myspacevendor.databinding.ActivityViewTokenBinding;
 import com.example.myspacevendor.model.ServerResponse;
+import com.example.myspacevendor.utils.SharedPrefManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import static com.example.myspacevendor.ui.LoginActivity.id;
-import static com.example.myspacevendor.ui.ViewShopActivity.shopId;
 
 public class ViewTokenActivity extends AppCompatActivity implements ViewHistoryAdapter.BookingInterface {
 
@@ -34,7 +34,8 @@ public class ViewTokenActivity extends AppCompatActivity implements ViewHistoryA
     private ViewHistoryAdapter viewHistoryAdapter;
     private final List<Booking> bookingList = new ArrayList<>();
 
-
+    private SharedPrefManager sharedPrefManager;
+    private int shopId = 0;
     private static final String TAG = "ViewTokenActivtiy";
 
     @Override
@@ -65,7 +66,12 @@ public class ViewTokenActivity extends AppCompatActivity implements ViewHistoryA
     /*--------------------------------- Init --------------------------------*/
 
     private void init() {
-        viewHistoryAdapter = new ViewHistoryAdapter(bookingList,this);
+
+        sharedPrefManager = new SharedPrefManager(context);
+        shopId = sharedPrefManager.getInt("shop_id");
+
+
+        viewHistoryAdapter = new ViewHistoryAdapter(bookingList, this);
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setAdapter(viewHistoryAdapter);
 
@@ -78,11 +84,11 @@ public class ViewTokenActivity extends AppCompatActivity implements ViewHistoryA
 
         Retrofit retrofit = AppConfig.getRetrofit();
         Api service = retrofit.create(Api.class);
-        Log.d(TAG, "ID: " + id);
-        Log.d(TAG, "ID: " + shopId);
+
+        Log.d(TAG, "Shop ID: " + shopId);
 
 
-        Call<ServerResponse> call = service.getTokenView(id,shopId);
+        Call<ServerResponse> call = service.getTokenView(shopId);
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
@@ -118,7 +124,7 @@ public class ViewTokenActivity extends AppCompatActivity implements ViewHistoryA
 
     @Override
     public void onClick(Booking booking) {
-
+        openActivity(ScanTokenActivity.class);
     }
 
 

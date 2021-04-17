@@ -7,14 +7,11 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import com.example.myspacevendor.Network.Api;
 import com.example.myspacevendor.Network.AppConfig;
 import com.example.myspacevendor.adapters.ShopAdapter;
 import com.example.myspacevendor.data.Shop;
-import com.example.myspacevendor.databinding.ActivityAdminShopListBinding;
 import com.example.myspacevendor.databinding.ActivityShopListBinding;
-
 import com.example.myspacevendor.model.ServerResponse;
 import com.example.myspacevendor.utils.Config;
 import com.example.myspacevendor.utils.SharedPrefManager;
@@ -27,9 +24,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-import static com.example.myspacevendor.ui.LoginActivity.vendor_email;
-import static com.example.myspacevendor.ui.LoginActivity.vendor_pwd;
-import static com.example.myspacevendor.ui.VendorListActivity.vid;
 import static com.example.myspacevendor.utils.Config.user_id;
 
 
@@ -46,6 +40,8 @@ public class ShopListActivity extends AppCompatActivity implements ShopAdapter.R
 
     private ShopAdapter shopAdapter;
     private SharedPrefManager sharedPrefManager;
+
+    private boolean isFromViewToken = false;
 
 
     @Override
@@ -64,6 +60,9 @@ public class ShopListActivity extends AppCompatActivity implements ShopAdapter.R
 
 
     private void init() {
+
+        Intent intent = getIntent();
+        isFromViewToken = intent.getBooleanExtra("from_view_token", false);
 
         sharedPrefManager = new SharedPrefManager(context);
 
@@ -130,10 +129,13 @@ public class ShopListActivity extends AppCompatActivity implements ShopAdapter.R
     @Override
     public void onClick(Shop shop) {
 
-
-        Intent intent = new Intent(context,ViewShopActivity.class);
-        sid= String.valueOf(shop.getShopId());
-        intent.putExtra("shop_id",shop.getShopId());
+        sharedPrefManager.setInt("shop_id", shop.getShopId());
+        Intent intent;
+        if (isFromViewToken) {
+            intent = new Intent(context, ViewTokenActivity.class);
+        } else {
+            intent = new Intent(context, ViewShopActivity.class);
+        }
         startActivity(intent);
     }
 

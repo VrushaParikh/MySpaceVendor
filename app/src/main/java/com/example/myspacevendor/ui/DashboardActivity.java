@@ -59,7 +59,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     }
 
 
-
     private void init() {
 
 
@@ -81,7 +80,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     }
     /*--------------------------------- On Options Item Selected -----------------------------------------*/
 
-   @Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (toggle.onOptionsItemSelected(item))
@@ -126,16 +125,16 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 //        binding.block1.setOnClickListener(v -> openActivity(ShopInfoActivity.class));
 
         binding.includedContent.block1.setOnClickListener(v -> {
-
             openActivity(ShopListActivity.class);
-
         });
         binding.includedContent.block2.setOnClickListener(v -> {
             openActivity(OdShopListActivity.class);
         });
 
         binding.includedContent.block3.setOnClickListener(v -> {
-            openActivity(ViewTokenActivity.class);
+            Intent intent = new Intent(context, ShopListActivity.class);
+            intent.putExtra("from_view_token", true);
+            startActivity(intent);
         });
         binding.includedContent.block4.setOnClickListener(v -> {
             openActivity(ScanTokenActivity.class);
@@ -160,8 +159,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         View header = binding.nav.getHeaderView(0);
         TextView tv = header.findViewById(R.id.header_user_name);
-        String na=sharedPrefManager.getString("name");
-        Log.d(TAG, "Name: " +na);
+        String na = sharedPrefManager.getString("name");
+        Log.d(TAG, "Name: " + na);
         tv.setText(sharedPrefManager.getString("name"));
 
     }
@@ -187,14 +186,14 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     /*--------------------------------- Icon Name  View -------------------------------------*/
 
     private void getInitial() {
-        View view=binding.includedContent.getRoot();
-        TextView tt=view.findViewById(R.id.icon_text);
-        String name=sharedPrefManager.getString("name");
+        View view = binding.includedContent.getRoot();
+        TextView tt = view.findViewById(R.id.icon_text);
+        String name = sharedPrefManager.getString("name");
 
         if (name.length() == 0)
             return;
-        String na= String.valueOf(Character.toUpperCase(name.charAt(0)));
-        Log.d(TAG, "Name: " +na);
+        String na = String.valueOf(Character.toUpperCase(name.charAt(0)));
+        Log.d(TAG, "Name: " + na);
         tt.setText(na);
 
     }

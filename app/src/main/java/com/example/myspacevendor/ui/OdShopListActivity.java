@@ -57,6 +57,7 @@ public class OdShopListActivity extends AppCompatActivity implements ShopAdapter
 //        clickListener();
 
 
+        sharedPrefManager = new SharedPrefManager(context);
     }
 
 
@@ -69,7 +70,6 @@ public class OdShopListActivity extends AppCompatActivity implements ShopAdapter
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setAdapter(shopAdapter);
         binding.addShop.setOnClickListener(view -> openActivity(ShopInfoActivity.class));
-
 
 
     }
@@ -128,10 +128,9 @@ public class OdShopListActivity extends AppCompatActivity implements ShopAdapter
     @Override
     public void onClick(Shop shop) {
 
+        sharedPrefManager.setInt("shop_id", shop.getShopId());
 
-        Intent intent = new Intent(context,OdViewShopActivity.class);
-
-        intent.putExtra("shop_id",shop.getShopId());
+        Intent intent = new Intent(context, OdViewShopActivity.class);
         startActivity(intent);
     }
 
