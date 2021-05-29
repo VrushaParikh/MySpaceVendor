@@ -48,7 +48,7 @@ public class ViewShopActivity extends AppCompatActivity {
         shopId = sharedPrefManager.getInt("shop_id");
 
 
-        Config.showToast(context, "" + shopId);
+//        Config.showToast(context, "" + shopId);
 
         fetchShops(String.valueOf(shopId));
         clickListener();

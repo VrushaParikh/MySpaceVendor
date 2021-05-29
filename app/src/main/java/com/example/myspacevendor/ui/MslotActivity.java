@@ -94,6 +94,7 @@ public class MslotActivity extends AppCompatActivity {
         }
 
         String[] t2 = shopStartTime.split(":", 2);
+        Config.showToast(context, "Start time " +shopStartTime);
 
         Duration interval = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {

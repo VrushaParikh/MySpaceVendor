@@ -17,6 +17,7 @@ import com.example.myspacevendor.Network.Api;
 import com.example.myspacevendor.Network.AppConfig;
 import com.example.myspacevendor.R;
 
+import com.example.myspacevendor.data.user.User;
 import com.example.myspacevendor.databinding.ActivityDashboardBinding;
 import com.example.myspacevendor.model.ServerResponse;
 import com.example.myspacevendor.utils.Config;
@@ -37,6 +38,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     private final Activity activity = this;
     private SharedPrefManager sharedPrefManager;
     private static String name;
+    public static User u1;
 
     private static final String TAG = "DashboardActivity";
 
@@ -172,6 +174,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         View header = binding.includedContent.getRoot();
         TextView tv = header.findViewById(R.id.user_name);
         tv.setText(sharedPrefManager.getString("name"));
+
 
     }
 

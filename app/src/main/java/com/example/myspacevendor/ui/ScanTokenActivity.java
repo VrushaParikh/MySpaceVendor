@@ -78,7 +78,7 @@ public class ScanTokenActivity extends AppCompatActivity {
 
             }
         } else {
-            Config.showToast(context, "Response Not Found");
+            Config.showToast(context, "Token not scanned");
 
         }
 

@@ -15,6 +15,7 @@ import com.example.myspacevendor.databinding.ActivityShopInfoBinding;
 import com.example.myspacevendor.model.ServerResponse;
 import com.example.myspacevendor.utils.Config;
 
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -126,7 +127,7 @@ public class ShopInfoActivity extends AppCompatActivity {
 
             }
 
-            doShopRegister(id,shop_name, shop_add, shop_pincode, shop_email, shop_gst, shop_pan, shop_bank_name, shop_ifsc,
+            doShopRegister(String.valueOf(Config.user_id) ,shop_name, shop_add, shop_pincode, shop_email, shop_gst, shop_pan, shop_bank_name, shop_ifsc,
                     shop_acc_no, shop_sqft, shop_lic_no, shop_timing);
 
         });
@@ -147,7 +148,7 @@ public class ShopInfoActivity extends AppCompatActivity {
 
 
 
-    private void doShopRegister(String id, String shop_name, String shop_add, String shop_pincode, String shop_email,
+    private void doShopRegister( String id , String shop_name, String shop_add, String shop_pincode, String shop_email,
                                 String shop_gst, String shop_pan, String shop_bank_name, String shop_ifsc,
                                 String shop_acc_no, String shop_sqft, String shop_lic_no, String shop_timing)
     {

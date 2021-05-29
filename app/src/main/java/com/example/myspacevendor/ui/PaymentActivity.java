@@ -17,6 +17,7 @@ import com.example.myspacevendor.R;
 import com.example.myspacevendor.data.user.User;
 import com.example.myspacevendor.databinding.ActivityPaymentBinding;
 import com.example.myspacevendor.model.ServerResponse;
+import com.example.myspacevendor.utils.Config;
 import com.example.myspacevendor.utils.SharedPrefManager;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
@@ -38,7 +39,9 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
     private ActivityPaymentBinding binding;
     private final Context context = this;
     private SharedPrefManager sharedPrefManager;
+    public static User u1;
     private static final String TAG = "PaymentActivity";
+
     Button btPay;
 
 
@@ -112,11 +115,11 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
                     //put amount
                     object.put("amount",amount);
                     //put mobile number
-                    object.put("prefill.contact","984880973");
-                    //put email
-                    object.put("prefill.email",vendor_email);
+//                    object.put("prefill.contact", "9824552365");
+//                    //put email
+//                    object.put("prefill.email","u1.getVendorEmail()");
 
-                    Log.d(TAG, "onFailure: " +vendor_email);
+                    Log.d(TAG, "onFailure: Try Again!" );
 
                     //open razor pay checkout activity
                     checkout.open(PaymentActivity.this,object);
@@ -151,7 +154,8 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
     @Override
     public void onPaymentError(int i, String s) {
         //Display Toast
-        Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
+        Config.showToast(context, "Payment not successful");
+//        Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
 
     }
 
